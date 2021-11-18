@@ -8153,10 +8153,10 @@ a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
-  color: #21cc7a; }
+  color: #2599e8; }
   a:hover, a:focus {
     text-decoration: none;
-    color: #21cc7a;
+    color: #2599e8;
     outline: none !important; }
 
 h1, h2, h3, h4, h5,
@@ -8167,7 +8167,7 @@ h1, h2, h3, h4, h5,
   font-family: "Nunito Sans", Arial, sans-serif; }
 
 .text-primary {
-  color: #21cc7a !important; }
+  color: #2599e8 !important; }
 
 .ftco-navbar-light {
   background: transparent !important;
@@ -8266,16 +8266,16 @@ h1, h2, h3, h4, h5,
     -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); }
     .ftco-navbar-light.scrolled .nav-item.active > a {
-      color: #21cc7a !important; }
+      color: #2599e8 !important; }
     .ftco-navbar-light.scrolled .nav-item.cta > a {
       color: #fff !important;
-      background: #21cc7a;
+      background: #2599e8;
       border: none !important; }
       .ftco-navbar-light.scrolled .nav-item.cta > a span {
         display: inline-block;
         color: #fff !important; }
     .ftco-navbar-light.scrolled .nav-item.cta.cta-colored span {
-      border-color: #21cc7a; }
+      border-color: #2599e8; }
     @media (max-width: 991.98px) {
       .ftco-navbar-light.scrolled .navbar-nav {
         background: none;
@@ -8301,7 +8301,7 @@ h1, h2, h3, h4, h5,
       padding-bottom: 0.9rem !important;
       color: #000000 !important; }
       .ftco-navbar-light.scrolled .nav-link.active {
-        color: #21cc7a !important; }
+        color: #2599e8 !important; }
     .ftco-navbar-light.scrolled.awake {
       margin-top: 0px;
       -webkit-transition: .3s all ease-out;
@@ -8377,7 +8377,7 @@ h1, h2, h3, h4, h5,
       -ms-transform: translateY(-50%);
       transform: translateY(-50%);
       margin-top: -10px;
-      color: #21cc7a !important;
+      color: #2599e8 !important;
       -moz-transition: all 0.7s ease;
       -o-transition: all 0.7s ease;
       -webkit-transition: all 0.7s ease;
@@ -8579,7 +8579,7 @@ h1, h2, h3, h4, h5,
   background: #f8f9fa !important; }
 
 .bg-primary {
-  background: #21cc7a; }
+  background: #2599e8; }
 
 .ftc-no-pt {
   padding-top: 0 !important; }
@@ -8598,20 +8598,20 @@ h1, h2, h3, h4, h5,
   .btn:hover, .btn:active, .btn:focus {
     outline: none; }
   .btn.btn-primary {
-    background: #21cc7a;
-    border: 1px solid #21cc7a;
+    background: #2599e8;
+    border: 1px solid #2599e8;
     color: #fff; }
     .btn.btn-primary:hover {
-      border: 1px solid #21cc7a;
+      border: 1px solid #2599e8;
       background: transparent;
-      color: #21cc7a; }
+      color: #2599e8; }
     .btn.btn-primary.btn-outline-primary {
-      border: 1px solid #21cc7a;
+      border: 1px solid #2599e8;
       background: transparent;
-      color: #21cc7a; }
+      color: #2599e8; }
       .btn.btn-primary.btn-outline-primary:hover {
         border: 1px solid transparent;
-        background: #21cc7a;
+        background: #2599e8;
         color: #fff; }
   .btn.btn-secondary {
     background: #2f89fc;
@@ -8636,7 +8636,7 @@ h1, h2, h3, h4, h5,
     .btn.btn-black:hover {
       border: 1px solid #000000;
       background: #000000;
-      color: #21cc7a; }
+      color: #2599e8; }
   .btn.btn-outline-white {
     border-color: rgba(255, 255, 255, 0.8);
     background: none;
@@ -8649,7 +8649,7 @@ h1, h2, h3, h4, h5,
     .btn.btn-outline-white:hover, .btn.btn-outline-white:focus, .btn.btn-outline-white:active {
       background: #fff;
       border-color: #fff;
-      color: #21cc7a; }
+      color: #2599e8; }
 
 .ftco-booking {
   padding: 5em 0;
@@ -8672,7 +8672,7 @@ h1, h2, h3, h4, h5,
     .booking-form .form-group label {
       font-weight: 700;
       font-size: 12px;
-      color: #21cc7a;
+      color: #2599e8;
       text-transform: uppercase;
       letter-spacing: 1px; }
     .booking-form .form-group .icon {
@@ -8713,7 +8713,7 @@ h1, h2, h3, h4, h5,
           display: block;
           text-transform: capitalize; }
       .booking-form .form-group .btn:hover {
-        color: #21cc7a; }
+        color: #2599e8; }
         .booking-form .form-group .btn:hover small {
           color: #fff !important; }
   .booking-form .form-control {
@@ -8749,7 +8749,7 @@ h1, h2, h3, h4, h5,
     padding-top: 18px;
     height: inherit !important; }
   .booking-form .btn-primary {
-    background: #21cc7a;
+    background: #2599e8;
     border: none !important;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -8817,17 +8817,17 @@ h1, h2, h3, h4, h5,
     box-shadow: 0px -4px 15px -15px rgba(0, 0, 0, 0.42); }
     .services .icon span {
       font-size: 54px;
-      color: #21cc7a; }
+      color: #2599e8; }
   .services .media-body h3 {
     font-size: 20px; }
   .services:hover {
-    background: #21cc7a; }
+    background: #2599e8; }
     .services:hover .icon {
       -webkit-box-shadow: 0px -4px 15px -12px rgba(0, 0, 0, 0.32);
       -moz-box-shadow: 0px -4px 15px -12px rgba(0, 0, 0, 0.32);
       box-shadow: 0px -4px 15px -12px rgba(0, 0, 0, 0.32); }
       .services:hover .icon span {
-        color: #21cc7a; }
+        color: #2599e8; }
     .services:hover h3 {
       color: #fff; }
 
@@ -8984,7 +8984,7 @@ h1, h2, h3, h4, h5,
         color: #000000;
         font-size: 14px; }
         .room .text ul.list li span {
-          color: #21cc7a; }
+          color: #2599e8; }
 
 .room-img {
   height: 400px;
@@ -8993,7 +8993,7 @@ h1, h2, h3, h4, h5,
 .room-single h2 {
   font-size: 28px; }
   .room-single h2 span {
-    color: #21cc7a;
+    color: #2599e8;
     font-size: 18px; }
 
 .room-single .loc {
@@ -9164,7 +9164,7 @@ textarea.form-control {
   visibility: hidden; }
 
 .bg-primary {
-  background: #21cc7a !important; }
+  background: #2599e8 !important; }
 
 .ftco-section .ftco-sub-title {
   font-size: 16px;
@@ -9184,7 +9184,7 @@ textarea.form-control {
     font-weight: 500;
     font-size: 16px;
     margin-bottom: 0;
-    color: #21cc7a; }
+    color: #2599e8; }
   .media-custom .media-body .position {
     font-size: 13px;
     color: #d9d9d9; }
@@ -9279,12 +9279,12 @@ textarea.form-control {
   .footer-small-nav > li a {
     margin: 0 10px 10px 0; }
     .footer-small-nav > li a:hover, .footer-small-nav > li a:focus {
-      color: #21cc7a; }
+      color: #2599e8; }
 
 .media .ftco-icon {
   width: 100px; }
   .media .ftco-icon span {
-    color: #21cc7a; }
+    color: #2599e8; }
 
 .ftco-media {
   background: #fff;
@@ -9308,7 +9308,7 @@ textarea.form-control {
   .ftco-media .icon {
     font-size: 50px;
     display: block;
-    color: #21cc7a; }
+    color: #2599e8; }
   .ftco-media.text-center .ftco-icon {
     margin: 0 auto; }
 
@@ -9351,7 +9351,7 @@ textarea.form-control {
   font-size: 13px;
   display: block;
   margin-bottom: 5px;
-  color: #21cc7a;
+  color: #2599e8;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 700; }
@@ -9479,7 +9479,7 @@ textarea.form-control {
       border-radius: 50%;
       background: rgba(0, 0, 0, 0.1); }
       .testimony-section .owl-dots .owl-dot.active {
-        background: #21cc7a; }
+        background: #2599e8; }
 
 .testimony-wrap {
   display: block;
@@ -9496,7 +9496,7 @@ textarea.form-control {
       right: 0;
       width: 40px;
       height: 40px;
-      background: #21cc7a;
+      background: #2599e8;
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
       -ms-border-radius: 50%;
@@ -9639,7 +9639,7 @@ textarea.form-control {
     display: block;
     font-size: 72px;
     font-weight: bold;
-    color: #21cc7a; }
+    color: #2599e8; }
   .ftco-counter .ftco-label {
     font-size: 12px;
     text-transform: uppercase;
@@ -9675,7 +9675,7 @@ textarea.form-control {
     .blog-entry .text .heading a {
       color: #000000; }
       .blog-entry .text .heading a:hover, .blog-entry .text .heading a:focus, .blog-entry .text .heading a:active {
-        color: #21cc7a; }
+        color: #2599e8; }
   .blog-entry .text .meta-chat {
     color: #2f89fc; }
   .blog-entry .text .read {
@@ -9765,7 +9765,7 @@ textarea.form-control {
     margin-bottom: 4px;
     font-weight: 400; }
     .block-27 ul li a, .block-27 ul li span {
-      color: #21cc7a;
+      color: #2599e8;
       text-align: center;
       display: inline-block;
       width: 40px;
@@ -9775,7 +9775,7 @@ textarea.form-control {
       border: 1px solid #82ebb8; }
     .block-27 ul li.active a, .block-27 ul li.active span {
       background: #82ebb8;
-      color: #21cc7a;
+      color: #2599e8;
       border: 1px solid transparent; }
 
 .contact-section .contact-info p a {
@@ -9810,7 +9810,7 @@ textarea.form-control {
     .block-21 .text .heading a {
       color: #000000; }
       .block-21 .text .heading a:hover, .block-21 .text .heading a:active, .block-21 .text .heading a:focus {
-        color: #21cc7a; }
+        color: #2599e8; }
   .block-21 .text .meta > div {
     display: inline-block;
     font-size: 12px;

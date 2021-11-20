@@ -7,7 +7,7 @@ var methodOverride = require('method-override');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(methodOverride('__method')); //Permite fazer requisições do tipo put/patch/delet etc...
+app.use(methodOverride('_method')); //Permite fazer requisições do tipo put/patch/delet etc...
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));

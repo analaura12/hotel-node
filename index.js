@@ -12,6 +12,7 @@ app.use(methodOverride('__method')); //Permite fazer requisições do tipo put/p
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
+//ROTAS:
 app.get('/', (req, res) => {
     res.render('home');
 });

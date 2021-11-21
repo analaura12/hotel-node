@@ -3,12 +3,35 @@
 
 <head>
     <meta charset='utf-8'>
-    <title>Page Title</title>
+    <title>Home</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
 </head>
 
 <body>
+    <h1>Acomodações:</h1>
+    <ul>
+        <% for (let q of quartos){ %>
+            <li>
+                <%= q.number %> -
+                    <%= q.company_name %>
+            </li>
+            <% } %>
+    </ul>
+
+    <h1>Reservas:</h1>
+    <ul>
+        <% for (let r of reservas){ %>
+            <li>
+                <%= r.number %> -
+                    <%= r.initial_date %> -
+                        <%= r.final_date %>
+                            <a href="/user/<%= r.id %>">Detalhes</a>
+            </li>
+            <% } %>
+    </ul>
+    <a href="/user/newReserve">Nova reserva</a>
+
 </body>
 
 </html>

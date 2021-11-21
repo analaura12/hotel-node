@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <h1>Editar reserva</h1>
+    <form method="POST" action="/user/<%= var_reserve.id %>?_method=PATCH">
+        <section>
+            <label>Digite a data inicial da reserva: </label>
+            <textarea name="initial_date" cols="15" rows="1"><%=var_reserve.initial_date%></textarea>
+        </section>
+        <section>
+            <label>Digite a data final da reserva: </label>
+            <textarea name="final_date" cols="15" rows="1"><%=var_reserve.final_date%></textarea>
+        </section>
+        <br>
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+
+</html>

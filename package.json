@@ -1,16 +1,24 @@
 {
-  "name": "proj",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "ana laura",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "mssql": "^7.2.1"
-  }
+    "name": "proj",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Ana Laura e Bruna Lima",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "method-override": "^3.0.0",
+        "mssql": "^7.2.1",
+        "mysql2": "^2.3.3",
+        "pug": "^3.0.2",
+        "sequelize": "^6.12.0-alpha.1"
+    },
+    "devDependencies": {
+        "sequelize-cli": "^6.3.0"
+    }
 }

@@ -4,7 +4,7 @@ module.exports = {
     up: async(queryInterface, Sequelize) => {
         /** Executado quando eu executar a migration*/
 
-        await queryInterface.createTable('user', {
+        await queryInterface.createTable('users', {
             id: {
                 type: Sequelize.INTEGER,
                 primaryKey: true,

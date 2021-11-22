@@ -11,17 +11,29 @@
 <body>
     <h1>Acomodações:</h1>
     <ul>
-        <% for (let q of quartos){ %>
+        <% for (let a of accommodation){ %>
             <li>
-                <%= q.number %> -
-                    <%= q.company_name %>
+                <%= a.number %> -
+                    <%= a.value %> -
+                        <%= a.number_of_guests %>
+            </li>
+            <% } %>
+    </ul>
+
+    <h1>Hoteis:</h1>
+    <ul>
+        <% for (let h of hotels){ %>
+            <li>
+                <%= h.company_name %> -
+                    <%= h.telephone %> -
+                        <%= h.address %>
             </li>
             <% } %>
     </ul>
 
     <h1>Reservas:</h1>
     <ul>
-        <% for (let r of reservas){ %>
+        <% for (let r of reserves){ %>
             <li>
                 <%= r.number %> -
                     <%= r.initial_date %> -

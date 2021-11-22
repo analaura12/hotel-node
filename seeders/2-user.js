@@ -4,7 +4,7 @@ module.exports = {
     up: async(queryInterface, Sequelize) => {
         /** Add seed commands here.*/
 
-        await queryInterface.bulkInsert('user', [{
+        await queryInterface.bulkInsert('users', [{
             first_name: 'User',
             last_name: 'Admin',
             cpf: '00000000000',
@@ -21,7 +21,7 @@ module.exports = {
     down: async(queryInterface, Sequelize) => {
         /** Add commands to revert seed here.*/
 
-        await queryInterface.bulkDelete('user', null, {});
+        await queryInterface.bulkDelete('users', null, {});
 
     }
 };

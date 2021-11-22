@@ -4,7 +4,7 @@ module.exports = {
     up: async(queryInterface, Sequelize) => {
         /** Add seed commands here.*/
 
-        await queryInterface.bulkInsert('hotel', [{
+        await queryInterface.bulkInsert('hotels', [{
             cnpj: '00.000.000/0000-00',
             company_name: 'Admin',
             telephone: '12900000000',
@@ -25,7 +25,7 @@ module.exports = {
     down: async(queryInterface, Sequelize) => {
         /** Add commands to revert seed here.*/
 
-        await queryInterface.bulkDelete('hotel', null, {});
+        await queryInterface.bulkDelete('hotels', null, {});
 
     }
 };

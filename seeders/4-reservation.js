@@ -4,7 +4,7 @@ module.exports = {
     up: async(queryInterface, Sequelize) => {
         /** Add seed commands here.*/
 
-        await queryInterface.bulkInsert('reservation', [{
+        await queryInterface.bulkInsert('reserves', [{
             number: '20',
             initial_date: '2021-12-10',
             final_date: '2021-12-20',
@@ -20,7 +20,7 @@ module.exports = {
     down: async(queryInterface, Sequelize) => {
         /** Add commands to revert seed here.*/
 
-        await queryInterface.bulkDelete('reservation', null, {});
+        await queryInterface.bulkDelete('reserves', null, {});
 
     }
 };

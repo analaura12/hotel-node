@@ -4,7 +4,7 @@ module.exports = {
     up: async(queryInterface, Sequelize) => {
         /** Executado quando eu executar a migration*/
 
-        await queryInterface.createTable('hotel', {
+        await queryInterface.createTable('hotels', {
             id: {
                 type: Sequelize.INTEGER,
                 primaryKey: true,
@@ -89,6 +89,6 @@ module.exports = {
     down: async(queryInterface, Sequelize) => {
         /** Executado quando eu desfizer a migration*/
 
-        await queryInterface.dropTable('hotel');
+        await queryInterface.dropTable('hotels');
     }
 };

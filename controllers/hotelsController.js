@@ -1,6 +1,5 @@
-const { Hotel } = require('../models');
+const { Hotel, Accommodation1, Reserve } = require('../models');
 const { Router } = require('express');
-
 const router = Router();
 
 router.get('/', (req, res) => {

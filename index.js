@@ -1,26 +1,104 @@
 const express = require('express');
+const bcrypt = require('bcryptjs');
+const LocalStrategy = require('passport-local').Strategy;
 const path = require('path');
 const app = express();
-const { hotels, users, accommodation, reserves } = require('./controllers')
+const { User, Hotel } = require('./models');
+const { hotels, users, registrations, accommodation, reserves } = require('./controllers')
 var methodOverride = require('method-override');
 
+//Traduzir os dados do corpo da requisição para variáveis
 app.use(express.urlencoded({ extended: true }));
+
+//Indica que o formato dos dados seja JSON
 app.use(express.json());
 
-app.use(methodOverride('_method')); //Permite fazer requisições do tipo put/patch/delet etc...
+//Permite fazer requisições de tipos PUT/PATCH/DELETE e etc.
+app.use(methodOverride('_method'));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
+
+//Sessão
+const session = require('express-session');
+const sessOptions = {
+    secret: 'frasealeatoria',
+    resave: false,
+    saveUninitialized: false
+}
+app.use(session(sessOptions));
+
+function verifica_loginUser(req, res, next) {
+    if (req.session.loginUser) {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+}
+
+function verifica_loginHotel(req, res, next) {
+    if (req.session.loginHotel) {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+}
+
+//Login
+app.get('/login', (req, res) => {
+    res.render('login');
+});
+app.get('/logoff', (req, res) => {
+    req.session.destroy();
+    res.redirect('/login');
+});
+app.post('/login', async(req, res) => {
+    const { password, email, type } = req.body;
+    try {
+        req.session.loginUser = false;
+        req.session.loginHotel = false;
+        if (type == "user") {
+            const SpecificUser = await User.findOne({
+                where: {
+                    email: email,
+                    password: password
+                }
+            });
+            if (SpecificUser) {
+                req.session.loginUser = true;
+                console.log(SpecificUser);
+                res.redirect('/user');
+            } else {
+                res.redirect('/login');
+            }
+        } else {
+            const hotel = await Hotel.findOne({
+                where: {
+                    email: email,
+                    password: password
+                }
+            });
+            if (hotel) {
+                req.session.loginHotel = true;
+                res.redirect('/hotel/');
+            } else {
+                res.redirect('/login');
+            }
+        }
+    } catch (err) {
+        console.log(err);
+    }
+});
 
 //ROTAS:
 app.get('/', (req, res) => {
     res.render('home');
 });
-
+app.use('/registration', registrations);
+app.use(verifica_loginUser);
 app.use('/user', users);
+app.use(verifica_loginHotel);
 app.use('/hotel', hotels);
-app.use('/accommodation', accommodation);
-app.use('/reserves', reserves);
 
 app.get('*', (req, res) => {
     res.send("<h1> Rota não encontrada. </h1>");

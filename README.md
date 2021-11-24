@@ -8,3 +8,9 @@
 * npm install
 * npx sequelize db:migrate
 * npx sequelize db:seed:all
+
+
+
+Problema:
+
+Preciso pegar o id do usuário que está acessando.

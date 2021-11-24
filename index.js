@@ -28,16 +28,8 @@ const sessOptions = {
 }
 app.use(session(sessOptions));
 
-function verifica_loginUser(req, res, next) {
-    if (req.session.loginUser) {
-        next();
-    } else {
-        res.redirect('/login');
-    }
-}
-
-function verifica_loginHotel(req, res, next) {
-    if (req.session.loginHotel) {
+function verifica_login(req, res, next) {
+    if (req.session.login) {
         next();
     } else {
         res.redirect('/login');
@@ -55,8 +47,8 @@ app.get('/logoff', (req, res) => {
 app.post('/login', async(req, res) => {
     const { password, email, type } = req.body;
     try {
-        req.session.loginUser = false;
-        req.session.loginHotel = false;
+        req.session.login = false;
+        req.session.login = false;
         if (type == "user") {
             const SpecificUser = await User.findOne({
                 where: {
@@ -65,7 +57,7 @@ app.post('/login', async(req, res) => {
                 }
             });
             if (SpecificUser) {
-                req.session.loginUser = true;
+                req.session.login = true;
                 console.log(SpecificUser);
                 res.redirect('/user');
             } else {
@@ -79,8 +71,9 @@ app.post('/login', async(req, res) => {
                 }
             });
             if (hotel) {
-                req.session.loginHotel = true;
-                res.redirect('/hotel/');
+                req.session.login = true;
+                console.log("passou");
+                res.redirect('/hotel');
             } else {
                 res.redirect('/login');
             }
@@ -95,10 +88,14 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 app.use('/registration', registrations);
-app.use(verifica_loginUser);
-app.use('/user', users);
-app.use(verifica_loginHotel);
+
+app.use(verifica_login);
 app.use('/hotel', hotels);
+
+app.use(verifica_login);
+app.use('/user', users);
+
+
 
 app.get('*', (req, res) => {
     res.send("<h1> Rota não encontrada. </h1>");

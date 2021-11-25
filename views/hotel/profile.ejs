@@ -71,7 +71,12 @@
             <textarea name="social_reason" cols="25" rows="1"><%=var_hotel.social_reason%></textarea>
         </section>
         <br>
-        <button type="submit">Salvar</button>
+        <button type="submit">Salvar</button> <a href="/hotel"><button>Voltar</button></a>
+    </form>
+
+    <br>
+    <form method="POST" action="/hotel/profile/<%=var_hotel.id%>?_method=DELETE">
+        <br><button>Apagar perfil</button>
     </form>
 </body>
 

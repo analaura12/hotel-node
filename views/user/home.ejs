@@ -11,39 +11,50 @@
 <body>
     <h1>Acomodações:</h1>
     <ul>
-        <% for (let a of accommodation){ %>
-            <li>
-                <%= a.number %> -
-                    <%= a.value %> -
-                        <%= a.number_of_guests %>
-            </li>
-            <% } %>
+        <% const countAccommodation = accommodation.length %>
+            <% for (let a of accommodation){ %>
+                <li>
+                    <%= a.number %> -
+                        <%= a.value %> -
+                            <%= a.number_of_guests %>
+                </li>
+                <% } %>
+                    <% if (countAccommodation == 0) {%>
+                        Não há acomodações registradas. <br>
+                        <% } %>
     </ul>
 
     <h1>Hoteis:</h1>
     <ul>
-        <% for (let h of hotels){ %>
-            <li>
-                <%= h.company_name %> -
-                    <%= h.telephone %> -
-                        <%= h.address %>
-            </li>
-            <% } %>
+        <% const countHotels = hotels.length %>
+            <% for (let h of hotels){ %>
+                <li>
+                    <%= h.company_name %> -
+                        <%= h.telephone %> -
+                            <%= h.address %>
+                </li>
+                <% } %>
+                    <% if (countHotels == 0) {%>
+                        Não há reservas. <br>
+                        <% } %>
     </ul>
 
     <h1>Reservas:</h1>
     <ul>
-        <% for (let r of reserves){ %>
-            <li>
-                <%= r.number %> -
-                    <%= r.initial_date %> -
-                        <%= r.final_date %>
-                            <a href="/user/<%= r.id %>">Detalhes</a>
-            </li>
-            <% } %>
+        <% const countReserves = reserves.length %>
+            <% for (let r of reserves){ %>
+                <li>
+                    <%= r.number %> -
+                        <%= r.initial_date %> -
+                            <%= r.final_date %>
+                                <a href="/user/<%= r.id %>">Detalhes</a>
+                </li>
+                <% } %>
+                    <% if (countReserves == 0) {%>
+                        Não há reservas. <br>
+                        <% } %>
     </ul>
     <br>
-
     <a href="/user/profile"><button>Meu perfil</button></a>
     <a href="/logoff"><button>Sair</button></a>
     <br><br>

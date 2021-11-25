@@ -10,9 +10,39 @@
 <body>
     <h1> Olá Hotel!</h1>
     <br>
+    <% const countAccommodation = accommodation.length %>
+        <h1>Acomodações:</h1>
+        <ul>
+            <% for (let a of accommodation){ %>
+                <li>
+                    <%= a.number %> -
+                        <%= a.value %> -
+                            <%= a.number_of_guests %>
+                </li>
+                <% } %>
+                    <% if (countAccommodation == 0) {%>
+                        Não há acomodações registradas. <br>
+                        <% } %>
+        </ul>
 
-    <a href="/hotel/profile"><button>Meu perfil</button></a>
-    <a href="/logoff"><button>Sair</button></a>
+        <h1>Reservas:</h1>
+        <ul>
+            <% const countReserves = reserves.length %>
+                <% for (let r of reserves){ %>
+                    <li>
+                        <%= r.number %> -
+                            <%= r.initial_date %> -
+                                <%= r.final_date %>
+                                    <a href="/hotel/<%= r.id %>">Detalhes</a>
+                    </li>
+                    <% } %>
+                        <% if (countReserves == 0) {%>
+                            Não há reservas. <br>
+                            <% } %>
+        </ul>
+
+        <a href="/hotel/profile"><button>Meu perfil</button></a>
+        <a href="/logoff"><button>Sair</button></a>
 </body>
 
 </html>

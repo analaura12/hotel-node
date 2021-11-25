@@ -48,7 +48,12 @@
             <textarea name="email" cols="15" rows="1" required><%=var_user.email%></textarea>
         </section>
         <br>
-        <button type="submit">Salvar</button>
+        <button type="submit">Salvar</button> <a href="/user"><button>Voltar</button></a>
+    </form>
+
+    <br>
+    <form method="POST" action="/user/profile/<%=var_user.id%>?_method=DELETE">
+        <br><button>Apagar perfil</button>
     </form>
 </body>
 

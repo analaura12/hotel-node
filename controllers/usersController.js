@@ -4,23 +4,22 @@ const { Router } = require('express');
 const router = Router();
 
 router.get('/', async(req, res) => {
+    const idUser = req.session.userid;
     try {
         const reserves = await Reserve.findAll({
-            include: [
-                { model: Hotel }
-            ]
+            where: { user_id: idUser }
         });
         const hotels = await Hotel.findAll();
         const accommodation = await Accommodation1.findAll();
-        res.render('user/home', { reserves, hotels, accommodation });
+        res.render('user/home', { reserves, hotels, accommodation, idUser });
     } catch (err) {
         console.log(err);
     }
 });
 
 
-router.get('/profile/:id', async(req, res) => {
-    const { id } = req.params;
+router.get('/profile', async(req, res) => {
+    const id = req.session.userid;
     try {
         let var_user = await User.findByPk(id);
         res.render('user/profile', { var_user });
@@ -37,6 +36,18 @@ router.patch('/:id', async(req, res) => {
             where: { id: req.params.id }
         });
         res.redirect('/user/');
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+router.delete('/profile/:id', async(req, res) => {
+    try {
+        await User.destroy({
+            where: { id: req.params.id }
+        });
+        req.session.destroy();
+        res.redirect('/login');
     } catch (err) {
         console.log(err);
     }
@@ -73,17 +84,6 @@ router.post('/new', async(req, res) => {
 
     try {
         await Reserve.create({ id, number, initial_date, final_date });
-        res.redirect('/user');
-    } catch (err) {
-        console.log(err);
-    }
-});
-
-router.delete('/:id', async(req, res) => {
-    try {
-        await Reserve.destroy({
-            where: { id: req.params.id }
-        });
         res.redirect('/user');
     } catch (err) {
         console.log(err);

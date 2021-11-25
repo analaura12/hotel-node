@@ -4,7 +4,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const path = require('path');
 const app = express();
 const { User, Hotel } = require('./models');
-const { hotels, users, registrations, accommodation, reserves } = require('./controllers')
+const { hotels, users, registrations, logins } = require('./controllers')
 var methodOverride = require('method-override');
 
 //Traduzir os dados do corpo da requisição para variáveis
@@ -35,7 +35,6 @@ function verifica_login(req, res, next) {
         res.redirect('/login');
     }
 }
-
 const verifica_user = (req, res, next) => {
     try {
         if (req.session.userType == "user") {
@@ -61,64 +60,13 @@ const verifica_hotel = (req, res, next) => {
     }
 }
 
-//Login
-app.get('/login', (req, res) => {
-    res.render('login');
-});
-app.get('/logoff', (req, res) => {
-    req.session.destroy();
-    res.redirect('/login');
-});
-app.post('/login', async(req, res) => {
-    const { password, email, type } = req.body;
-    try {
-        req.session.login = false;
-        if (type == "user") {
-            const user = await User.findOne({
-                where: {
-                    email: email,
-                    password: password
-                }
-            });
-
-            if (user) {
-                req.session.login = true;
-                req.session.userid = user.id;
-                req.session.userType = type;
-                res.redirect('/user');
-            } else {
-                res.redirect('/login');
-            }
-        } else {
-            const hotel = await Hotel.findOne({
-                where: {
-                    email: email,
-                    password: password
-                }
-            });
-            if (hotel) {
-                req.session.login = true;
-                req.session.userid = hotel.id;
-                req.session.userType = type;
-                console.log("passou");
-                res.redirect('/hotel');
-            } else {
-                res.redirect('/login');
-            }
-        }
-    } catch (err) {
-        console.log(err);
-    }
-});
-
-//ROTAS:
 app.get('/', (req, res) => {
     res.render('home');
 });
 app.use('/registration', registrations);
+app.use('/login', logins);
 
 app.use(verifica_login);
-
 app.use('/hotel', verifica_hotel, hotels);
 app.use('/user', verifica_user, users);
 

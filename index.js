@@ -36,6 +36,31 @@ function verifica_login(req, res, next) {
     }
 }
 
+const verifica_user = (req, res, next) => {
+    try {
+        if (req.session.userType == "user") {
+            return next();
+        } else {
+            req.session.destroy();
+            res.redirect('/login');
+        }
+    } catch (err) {
+        return res.status(401).json({ error: 'Auth' });
+    }
+}
+const verifica_hotel = (req, res, next) => {
+    try {
+        if (req.session.userType == "hotel") {
+            return next();
+        } else {
+            req.session.destroy();
+            res.redirect('/login');
+        }
+    } catch (err) {
+        return res.status(401).json({ error: 'Auth' });
+    }
+}
+
 //Login
 app.get('/login', (req, res) => {
     res.render('login');
@@ -48,17 +73,18 @@ app.post('/login', async(req, res) => {
     const { password, email, type } = req.body;
     try {
         req.session.login = false;
-        req.session.login = false;
         if (type == "user") {
-            const SpecificUser = await User.findOne({
+            const user = await User.findOne({
                 where: {
                     email: email,
                     password: password
                 }
             });
-            if (SpecificUser) {
+
+            if (user) {
                 req.session.login = true;
-                console.log(SpecificUser);
+                req.session.userid = user.id;
+                req.session.userType = type;
                 res.redirect('/user');
             } else {
                 res.redirect('/login');
@@ -72,6 +98,8 @@ app.post('/login', async(req, res) => {
             });
             if (hotel) {
                 req.session.login = true;
+                req.session.userid = hotel.id;
+                req.session.userType = type;
                 console.log("passou");
                 res.redirect('/hotel');
             } else {
@@ -90,12 +118,9 @@ app.get('/', (req, res) => {
 app.use('/registration', registrations);
 
 app.use(verifica_login);
-app.use('/hotel', hotels);
 
-app.use(verifica_login);
-app.use('/user', users);
-
-
+app.use('/hotel', verifica_hotel, hotels);
+app.use('/user', verifica_user, users);
 
 app.get('*', (req, res) => {
     res.send("<h1> Rota não encontrada. </h1>");

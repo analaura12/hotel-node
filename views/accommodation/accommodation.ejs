@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<style>
+    #available {
+        display: none;
+    }
+    
+    #unavailable {
+        display: none;
+    }
+</style>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Acomodação
+        <%= accommodation.number %>
+    </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+
+<body>
+    <h1>Sobre a acomodação</h1>
+    <div class="card mb-3">
+        <img src="/images/registration/<%=accommodation.photo%>" class="img-fluid rounded-start" alt="..." style="max-width:30%; height:auto;">
+
+        <div class="card-body">
+            <h3 class="card-title">Acomodação:
+                <%= accommodation.number %>
+            </h3>
+            <p class="card-text">
+                <strong>Número de pessoas:</strong>
+                <%= accommodation.number_of_guests %><br>
+                    <% if(accommodation.description) { %>
+                        <strong>Descrição:</strong>
+                        <%= accommodation.description %><br>
+                            <% } %>
+                                <% if(accommodation.convenience) { %>
+                                    <strong>Comodidade:</strong>
+                                    <%= accommodation.convenience %><br>
+                                        <% } %>
+                                            <% if(accommodation.observation) { %>
+                                                <strong>Observações:</strong>
+                                                <%= accommodation.observation %><br>
+                                                    <% } %>
+
+
+
+            </p>
+            <p class="card-text">
+                <h4 class="text-muted">R$
+                    <%= accommodation.value %>
+                </h4>
+            </p>
+        </div>
+    </div>
+    <br>
+    <h1>Sobre o Hotel:</h1>
+    <div class="card mb-3">
+        <img src="/images/registration/<%=hotels.photo%>" class="img-fluid rounded-start" alt="..." style="max-width:30%; height:auto;">
+
+        <div class="card-body">
+            <h3 class="card-title">
+                <%= hotels.company_name %>
+            </h3>
+            <p class="card-text">
+                CNPJ:
+                <%= hotels.cnpj %><br> Telefone:
+                    <%= hotels.telephone %>
+                        E-mail:
+                        <%= hotels.email %>
+                            <%= hotels.address %>,
+                                <%= hotels.number %> -
+                                    <%= hotels.district %>,
+                                        <%= hotels.city %> -
+                                            <%= hotels.state %>,
+                                                <%= hotels.cep %>.
+                                                    <%= hotels.country %>
+            </p>
+            <p>
+                <% if(hotels.social_reason) { %>
+                    <strong>Razão social:</strong>
+                    <%= hotels.social_reason %><br>
+                        <% } %>
+                            <% if(hotels.convenience) { %>
+                                <strong>Comodidade:</strong>
+                                <%= hotels.convenience %><br>
+                                    <% } %>
+                                        <% if(hotels.observation) { %>
+                                            <strong>Observação:</strong>
+                                            <%= hotels.observation %><br>
+                                                <% } %>
+                                                    <% if(hotels.avaliation) { %>
+                                                        <strong>Avaliação:</strong>
+                                                        <%= hotels.avaliation %><br>
+                                                            <% } %>
+            </p>
+        </div>
+    </div>
+
+    <h1>Disponibilidade:</h1>
+
+    <section><br>
+        <label>Escolha uma data inicial: </label>
+        <input type="date" id="reserve_initial_date" name="reserve_initial_date" min='2021-11-27' max='2022-11-27' onchange="seeAvailability()">
+    </section>
+
+    <section><br>
+        <label>Escolha uma data final: </label>
+        <input type="date" id="reserve_final_date" name="reserve_final_date" min='2021-11-27' max='2022-11-27' onchange="seeAvailability()">
+    </section>
+
+    <div id="available">
+        <p>Esta data está disponível!</p>
+        Gostaria de reservá-la? <a><button>Clique aqui</button></a>
+    </div>
+
+    <div id="unavailable">
+        <p>Esta data está indisponível, tente escolher uma outra data!
+            <p>
+    </div>
+    <p id="teste"> testee</p>
+    <br>
+    <a href="/user"><button>Voltar</button></a>
+    <br>
+
+</body>
+<script>
+    var data = new Date();
+    var dd = data.getDate();
+    var mm = data.getMonth() + 1; //0 a 11
+    var yy = data.getFullYear(); // 4 dígitos
+    var today = yy + '-' + mm + '-' + dd;
+    var nextYear = (yy + 1) + '-' + mm + '-' + dd;
+    var dateControl = document.querySelector('input[type="date"]');
+
+    dateControl.setAttribute("max", nextYear);
+    dateControl.setAttribute("min", today);
+    var date_available = document.getElementById('available');
+    var date_unavailable = document.getElementById('unavailable');
+
+    function seeAvailability() {
+        var reserve_initial_date = document.getElementById('reserve_initial_date').value;
+        var reserve_initial_date = document.getElementById('reserve_final_date').value;
+        var count = 0;
+
+        document.getElementById("teste").innerHTML = `testando: ${count}`;
+
+        if (reserve_initial_date > today) {
+            date_available.style.display = "block";
+            date_unavailable.style.display = "none";
+        } else {
+            date_unavailable.style.display = "block";
+            date_available.style.display = "none";
+        }
+    }
+</script>
+
+</html>

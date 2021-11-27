@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Perfil</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <h1>Meu perfil</h1>
+    <form method="POST" action="/hotel/<%= var_hotel.id %>?_method=PATCH" enctype="multipart/form-data">
+        <section>
+            <label>Nome: </label>
+            <textarea name="company_name" cols="25" rows="1" required><%=var_hotel.company_name%></textarea>
+        </section>
+        <section><br>
+            <label>CNPJ: </label>
+            <textarea name="cnpj" cols="25" rows="1" minlength="11" maxlength="14" required><%=var_hotel.cnpj%></textarea>
+        </section>
+        <section><br>
+            <label>Telefone:</label>
+            <textarea name="telephone" cols="25" rows="1" minlength="11" maxlength="11" required><%=var_hotel.telephone%></textarea>
+        </section>
+        <section><br>
+            <label>E-mail:</label>
+            <textarea name="email" cols="25" rows="1" required><%=var_hotel.email%></textarea>
+        </section>
+        <section><br>
+            <label>Senha:</label>
+            <textarea name="password" cols="25" rows="1" minlength="5" maxlength="8" required><%=var_hotel.password%></textarea>
+        </section>
+        <section><br>
+            <label>Endereço:</label>
+            <textarea name="address" cols="25" rows="1"><%=var_hotel.address%></textarea>
+        </section>
+        <section><br>
+            <label>Número:</label>
+            <textarea name="number" cols="25" rows="1" required><%=var_hotel.number%></textarea>
+        </section>
+        <section><br>
+            <label>Bairro:</label>
+            <textarea name="district" cols="25" rows="1" required><%=var_hotel.district%></textarea>
+        </section>
+        <section><br>
+            <label>CEP:</label>
+            <textarea name="cep" cols="25" rows="1" minlength="5" maxlength="8" required><%=var_hotel.cep%></textarea>
+        </section>
+        <section><br>
+            <label>Cidade:</label>
+            <textarea name="city" cols="25" rows="1" required><%=var_hotel.city%></textarea>
+        </section>
+        <section><br>
+            <label>Estado:</label>
+            <textarea name="state" cols="25" rows="1" minlength="2" maxlength="2" required><%=var_hotel.state%></textarea>
+        </section>
+        <section><br>
+            <label>País:</label>
+            <textarea name="country" cols="25" rows="1" required><%=var_hotel.country%></textarea>
+        </section>
+        <section><br>
+            <label>Conveniência:</label>
+            <textarea name="convenience" cols="25" rows="1"><%=var_hotel.convenience%></textarea>
+        </section>
+        <section><br>
+            <label>Observation:</label>
+            <textarea name="observation" cols="25" rows="1"><%=var_hotel.observation%></textarea>
+        </section>
+        <section><br>
+            <label>Razão Social:</label>
+            <textarea name="social_reason" cols="25" rows="1"><%=var_hotel.social_reason%></textarea>
+        </section>
+        <section>
+            <label>Foto de perfil atual:<%=var_hotel.photo%></label>
+            <br><label>Atualize sua foto de perfil:</label><input type="file" name="photo">
+        </section>
+        <br>
+        <button type="submit">Salvar</button><a href="/hotel"><button>Voltar</button></a>
+    </form>
+
+    <br>
+    <form method="POST" action="/hotel/profile/<%=var_hotel.id%>?_method=DELETE">
+        <br><button>Apagar perfil</button>
+    </form>
+</body>
+
+</html>

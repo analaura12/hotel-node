@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Profile</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+
+<body>
+    <h1>Meu perfil</h1>
+    <form method="POST" action="/user/<%= var_user.id %>?_method=PATCH" enctype="multipart/form-data">
+        <section>
+            <label>Nome: </label>
+            <textarea name="first_name" cols="15" rows="1" required><%=var_user.first_name%></textarea>
+        </section>
+        <section><br>
+            <label>Sobrenome:</label>
+            <textarea name="last_name" cols="15" rows="1" required><%=var_user.last_name%></textarea>
+        </section>
+        <section><br>
+            <label>CPF: </label>
+            <textarea name="cpf" cols="15" rows="1" minlength="11" maxlength="11" required><%=var_user.cpf%></textarea>
+        </section>
+        <section><br>
+            <label>Data de nascimento: </label>
+            <textarea name="birth_date" cols="15" rows="1" required><%=var_user.birth_date%></textarea>
+        </section>
+        <section><br>
+            <label>Celular:</label>
+            <textarea name="cellphone" cols="15" rows="1" minlength="11" maxlength="11" required><%=var_user.cellphone%></textarea>
+        </section>
+        <section><br>
+            <label>Cidade:</label>
+            <textarea name="city" cols="15" rows="1" required><%=var_user.city%></textarea>
+        </section>
+        <section><br>
+            <label>Estado:</label>
+            <textarea name="state" cols="15" rows="1" minlength="2" maxlength="2" required><%=var_user.state%></textarea>
+        </section>
+        <section><br>
+            <label>Senha:</label>
+            <textarea name="password" cols="15" rows="1" minlength="5" maxlength="8" required><%=var_user.password%></textarea>
+        </section>
+        <section><br>
+            <label>E-mail:</label>
+            <textarea name="email" cols="15" rows="1" required><%=var_user.email%></textarea>
+        </section>
+        <section>
+            <label>Foto de perfil atual:<%=var_user.photo%></label>
+            <br><label>Atualize/adicione sua foto de perfil:</label><input type="file" name="photo">
+        </section>
+        <br>
+        <button type="submit">Salvar</button> <a href="/user"><button>Voltar</button></a>
+    </form>
+
+    <br>
+    <form method="POST" action="/user/profile/<%=var_user.id%>?_method=DELETE">
+        <br><button>Apagar perfil</button>
+    </form>
+</body>
+
+</html>

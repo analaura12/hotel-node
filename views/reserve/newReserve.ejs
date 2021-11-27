@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Página</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+
+<body>
+    <h1> Criar uma nova reserva:</h1>
+    <form action='/user/new' method='POST'>
+        <section>
+            <label>Digite o id: </label>
+            <input type="text" id="id" name="id">
+        </section>
+        <section>
+            <label>Digite o número: </label>
+            <input type="text" id="number" name="number">
+        </section>
+        <section>
+            <label>Digite a data inicial da reserva: </label>
+            <input type="date" id="initial_date" name="initial_date">
+        </section>
+        <section>
+            <label>Digite a data final da reserva: </label>
+            <input type="date" id="final_date" name="final_date">
+        </section>
+        <button>Enviar</button>
+    </form>
+    <a href="/user">Voltar</a>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 const { Hotel, Accommodation1, Reserve } = require('../models');
-
+const multer = require('./multer');
 const { Router } = require('express');
 const router = Router();
 
@@ -28,13 +28,22 @@ router.get('/profile', async(req, res) => {
     }
 });
 
-router.patch('/:id', async(req, res) => {
+router.patch('/:id', multer.single('photo'), async(req, res) => {
     const { company_name, cnpj, telephone, email, password, address, number, district, cep, city, state, country, convenience, observation, social_reason } = req.body;
+
     try {
-        await Hotel.update({ company_name, cnpj, telephone, email, password, address, number, district, cep, city, state, country, convenience, observation, social_reason }, {
-            where: { id: req.params.id }
-        });
-        res.redirect('/hotel');
+        try {
+            const photo = req.file.filename;
+            await Hotel.update({ company_name, cnpj, telephone, email, password, address, number, district, cep, city, state, country, convenience, observation, social_reason, photo }, {
+                where: { id: req.params.id }
+            });
+            res.redirect('/hotel');
+        } catch (err) {
+            await Hotel.update({ company_name, cnpj, telephone, email, password, address, number, district, cep, city, state, country, convenience, observation, social_reason }, {
+                where: { id: req.params.id }
+            });
+            res.redirect('/hotel');
+        }
     } catch (err) {
         console.log(err);
     }

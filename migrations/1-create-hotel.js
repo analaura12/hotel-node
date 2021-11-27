@@ -73,6 +73,9 @@ module.exports = {
             social_reason: {
                 type: Sequelize.STRING
             },
+            photo: {
+                type: Sequelize.STRING
+            },
             createdAt: {
                 type: Sequelize.DATE,
                 allowNull: false,

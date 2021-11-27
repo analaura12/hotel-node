@@ -33,6 +33,9 @@ module.exports = {
             observation: {
                 type: Sequelize.STRING
             },
+            photo: {
+                type: Sequelize.STRING
+            },
             hotel_id: {
                 type: Sequelize.INTEGER,
                 allowNull: false,

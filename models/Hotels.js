@@ -15,7 +15,8 @@ const Hotel = (sequelize, DataTypes) => {
         convenience: DataTypes.STRING,
         avaliation: DataTypes.STRING,
         observation: DataTypes.STRING,
-        social_reason: DataTypes.STRING
+        social_reason: DataTypes.STRING,
+        photo: DataTypes.STRING
     });
 }
 

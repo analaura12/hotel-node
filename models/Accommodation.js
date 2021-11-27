@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
         description: DataTypes.STRING,
         convenience: DataTypes.STRING,
         observation: DataTypes.STRING,
-        hotel_id: DataTypes.INTEGER
+        hotel_id: DataTypes.INTEGER,
+        photo: DataTypes.STRING
     }, {});
     Accommodation1.associate = function(models) {
         Accommodation1.belongsTo(models.Hotel, { foreignKey: 'hotel_id' })

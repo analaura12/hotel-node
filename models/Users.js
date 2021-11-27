@@ -8,7 +8,8 @@ const User = (sequelize, DataTypes) => {
         city: DataTypes.STRING,
         state: DataTypes.STRING,
         password: DataTypes.STRING,
-        email: DataTypes.STRING
+        email: DataTypes.STRING,
+        photo: DataTypes.STRING
     });
 }
 

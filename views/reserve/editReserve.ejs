@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <h1>Editar reserva</h1>
+    <form method="POST" action="/reserves/<%= var_reserve.id %>?_method=PATCH">
+        <%= var_reserve.initial_date %>
+            <section><br>
+                <label>Digite a data inicial da reserva: </label>
+                <input type="date" id="initial_date" name="initial_date" min='2021-11-27' max='2022-11-27' value="<%= var_reserve.initial_date %>">
+            </section>
+
+            <section><br>
+                <label>Digite a data final da reserva: </label>
+                <input type="date" id="final_date" name="final_date" min='2021-11-27' max='2022-11-27' value="<%= var_reserve.final_date %>">
+            </section>
+            <br>
+            <button type="submit">Ver disponibilidade</button>
+    </form>
+</body>
+<script>
+    var dd = data.getDate();
+    var mm = data.getMonth() + 1; //0 a 11
+    var yy = data.getFullYear(); // 4 dígitos
+    var today = yy + '-' + mm + '-' + dd;
+    var nextYear = (yy + 1) + '-' + mm + '-' + dd;
+    var dateControl = document.getElementById('initial_date');
+    var dateControl2 = document.getElementById('final_date');
+
+    dateControl.setAttribute("max", nextYear);
+    dateControl.setAttribute("min", today);
+
+    dateControl2.setAttribute("max", nextYear);
+    dateControl2.setAttribute("min", today);
+</script>
+
+</html>

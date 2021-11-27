@@ -59,42 +59,4 @@ router.delete('/profile/:id', async(req, res) => {
     }
 });
 
-/*
-router.get('/:id', async(req, res) => {
-    const { id } = req.params;
-    try {
-        const var_reserve = await Reserve.findByPk(id);
-        res.render('user/reserve', { var_reserve });
-    } catch (err) {
-        console.log(err);
-    }
-});
-
-router.get('/newReserve', (req, res) => {
-    res.render('user/newReserve');
-});
-
-router.get('/:id/editReserve', async(req, res) => {
-    const { id } = req.params;
-
-    try {
-        let var_reserve = await Reserve.findByPk(id);
-        res.render('user/editReserve', { var_reserve });
-    } catch (err) {
-        console.log(err);
-    }
-});
-
-router.post('/new', async(req, res) => {
-    const { id, number, initial_date, final_date } = req.body;
-
-    try {
-        await Reserve.create({ id, number, initial_date, final_date });
-        res.redirect('/user');
-    } catch (err) {
-        console.log(err);
-    }
-});
-*/
-
 module.exports = router;

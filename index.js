@@ -4,7 +4,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const path = require('path');
 const app = express();
 const { User, Hotel } = require('./models');
-const { hotels, users, registrations, logins } = require('./controllers')
+const { hotels, users, registrations, logins, accommodation, reserves } = require('./controllers')
 var methodOverride = require('method-override');
 
 //Traduzir os dados do corpo da requisição para variáveis
@@ -70,6 +70,8 @@ app.use('/login', logins);
 app.use(verifica_login);
 app.use('/hotel', verifica_hotel, hotels);
 app.use('/user', verifica_user, users);
+app.use('/accommodation', verifica_user, accommodation);
+app.use('/reserves', verifica_user, reserves);
 
 app.get('*', (req, res) => {
     res.send("<h1> Rota não encontrada. </h1>");

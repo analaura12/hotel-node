@@ -10,56 +10,104 @@
 
 <body>
     <h1>Acomodações:</h1>
-    <ul>
-        <% const countAccommodation = accommodation.length %>
-            <% for (let a of accommodation){ %>
+    <% const countAccommodation = accommodation.length %>
+        <% for (let a of accommodation){ %>
+            <ul style="list-style-type: none;">
                 <li>
-                    <%= a.number %> -
-                        <%= a.value %> -
-                            <%= a.number_of_guests %>
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="/images/registration/<%=a.photo%>" class="img-fluid rounded-start" alt="..." style="max-width:30%; height:auto;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <% for (let h of hotels){ %>
+                                        <% if (a.hotel_id == h.id) { %>
+                                            <h4 class="card-title">
+                                                <%= a.number%> -
+                                                    <%= h.company_name %>
+                                            </h4>
+                                            <p class="card-text"><small class="text-muted"><%= h.address %>, <%= h.number %>. <%= h.district %>, <%= h.city %> - <%= h.state %></small></p>
+                                            <p class="card-text">
+                                                <%= a.description %>
+                                            </p>
+                                            <p class="card-text">
+                                                Número de pessoas:
+                                                <%= a.number_of_guests %>
+                                            </p>
+                                            <p class="card-text">Preço:<strong>R$<%= a.value %></strong></p>
+                                            <div class="card-footer">
+                                                <a href="/accommodation/<%=a.id%>"><small class="text-muted">Ver mais detalhes</small></a>
+                                            </div>
+                                            <% } %>
+                                                <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br>
                 </li>
                 <% } %>
                     <% if (countAccommodation == 0) {%>
                         Não há acomodações registradas. <br>
                         <% } %>
-    </ul>
 
-    <h1>Hoteis:</h1>
-    <ul>
-        <% const countHotels = hotels.length %>
-            <% for (let h of hotels){ %>
-                <li>
-                    <img src="/images/registration/<%=h.photo%>" alt="some text" style="max-width:10%; height:auto;">
-                    <%= h.company_name %> -
-                        <%= h.telephone %> -
-                            <%= h.address %>
-                </li>
-                <% } %>
-                    <% if (countHotels == 0) {%>
-                        Não há reservas. <br>
-                        <% } %>
-    </ul>
+            </ul>
 
-    <h1>Reservas:</h1>
-    <ul>
-        <% const countReserves = reserves.length %>
-            <% for (let r of reserves){ %>
-                <li>
-                    <%= r.number %> -
-                        <%= r.initial_date %> -
-                            <%= r.final_date %>
-                                <a href="/user/<%= r.id %>">Detalhes</a>
-                </li>
-                <% } %>
-                    <% if (countReserves == 0) {%>
-                        Não há reservas. <br>
-                        <% } %>
-    </ul>
-    <br>
-    <a href="/user/profile"><button>Meu perfil</button></a>
-    <a href="/login/logoff"><button>Sair</button></a>
-    <br><br>
-    <a href="/user/newReserve">Nova reserva</a>
+            <h1>Hoteis:</h1>
+            <% const countHotels = hotels.length %>
+                <ul style="list-style-type: none;">
+                    <li>
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <div class="col">
+                                <% for (let h of hotels){ %>
+                                    <div class="card h-100">
+                                        <img src="/images/registration/<%=h.photo%>" alt="some text" style="max-width:10%; height:auto;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <%= h.company_name %>
+                                            </h5>
+                                            <p class="card-text">CNPJ:
+                                                <%= h.cnpj %><br>
+                                                    <%= h.address %>,
+                                                        <%= h.number %>.
+                                                            <%= h.district %>,
+                                                                <%= h.city %> -
+                                                                    <%= h.state %>
+                                            </p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <a href="/accommodation/hotel/<%=h.id%>"><small class="text-muted">Ver mais detalhes</small></a>
+                                        </div>
+                                    </div><br>
+                                    <% } %>
+                                        <% if (countHotels == 0) {%>
+                                            Não há reservas. <br>
+                                            <% } %>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+
+                <h1>Reservas:</h1>
+                <ul>
+                    <% const countReserves = reserves.length %>
+                        <% for (let r of reserves){ %>
+                            <li>
+                                <%= r.number %> -
+                                    <%= r.initial_date %> -
+                                        <%= r.final_date %>
+                                            <a href="/reserves/<%= r.id %>">Detalhes</a>
+                            </li>
+                            <% } %>
+                                <% if (countReserves == 0) {%>
+                                    Não há reservas. <br>
+                                    <% } %>
+                </ul>
+                <br>
+                <a href="/user/profile"><button>Meu perfil</button></a>
+                <a href="/login/logoff"><button>Sair</button></a>
+                <br>
 
 </body>
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Reserva</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <h1>
+        Reserva de número da reserva:
+        <%=reserves.number%>
+    </h1>
+    <p>
+        Status da reserva:
+        <%=reserves.status%>
+    </p>
+    <p id="initial_date">
+        Data inicial:
+        <%=reserves.initial_date%>
+    </p>
+    <p id="final_date">
+        Data final:
+        <%=reserves.final_date%>
+    </p>
+    <p>
+        Hotel:
+        <%=hotels.company_name%>
+    </p>
+    <p>
+        Quarto:
+        <%=accommodation.number%>
+    </p>
+    <p>
+        Número de pessoas:
+        <%=reserves.number_of_guests%>
+    </p>
+    <br>
+    <p><a href="/user">Voltar</a></p>
+    <p><a href="/reserves/<%=reserves.id%>/editReserve">Editar reserva</a></p>
+
+    <form method="POST" action="/reserves/delete/<%=reserves.id%>?_method=DELETE">
+        <button>Cancelar/Apagar</button>
+    </form>
+</body>
+
+</html>

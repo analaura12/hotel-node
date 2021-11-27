@@ -10,7 +10,7 @@
 
 <body>
     <h1>Meu perfil</h1>
-    <form method="POST" action="/user/<%= var_user.id %>?_method=PATCH">
+    <form method="POST" action="/user/<%= var_user.id %>?_method=PATCH" enctype="multipart/form-data">
         <section>
             <label>Nome: </label>
             <textarea name="first_name" cols="15" rows="1" required><%=var_user.first_name%></textarea>
@@ -46,6 +46,10 @@
         <section><br>
             <label>E-mail:</label>
             <textarea name="email" cols="15" rows="1" required><%=var_user.email%></textarea>
+        </section>
+        <section>
+            <label>Foto de perfil atual:<%=var_user.photo%></label>
+            <br><label>Atualize/adicione sua foto de perfil:</label><input type="file" name="photo">
         </section>
         <br>
         <button type="submit">Salvar</button> <a href="/user"><button>Voltar</button></a>

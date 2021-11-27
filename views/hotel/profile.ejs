@@ -9,7 +9,7 @@
 
 <body>
     <h1>Meu perfil</h1>
-    <form method="POST" action="/hotel/<%= var_hotel.id %>?_method=PATCH">
+    <form method="POST" action="/hotel/<%= var_hotel.id %>?_method=PATCH" enctype="multipart/form-data">
         <section>
             <label>Nome: </label>
             <textarea name="company_name" cols="25" rows="1" required><%=var_hotel.company_name%></textarea>
@@ -70,8 +70,12 @@
             <label>Razão Social:</label>
             <textarea name="social_reason" cols="25" rows="1"><%=var_hotel.social_reason%></textarea>
         </section>
+        <section>
+            <label>Foto de perfil atual:<%=var_hotel.photo%></label>
+            <br><label>Atualize sua foto de perfil:</label><input type="file" name="photo">
+        </section>
         <br>
-        <button type="submit">Salvar</button> <a href="/hotel"><button>Voltar</button></a>
+        <button type="submit">Salvar</button><a href="/hotel"><button>Voltar</button></a>
     </form>
 
     <br>

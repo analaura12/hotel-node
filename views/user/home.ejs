@@ -29,6 +29,7 @@
         <% const countHotels = hotels.length %>
             <% for (let h of hotels){ %>
                 <li>
+                    <img src="/images/registration/<%=h.photo%>" alt="some text" style="max-width:10%; height:auto;">
                     <%= h.company_name %> -
                         <%= h.telephone %> -
                             <%= h.address %>

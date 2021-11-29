@@ -13,8 +13,7 @@ module.exports = {
                 unique: true
             },
             number: {
-                type: Sequelize.INTEGER,
-                allowNull: false,
+                type: Sequelize.INTEGER
             },
             initial_date: {
                 type: Sequelize.DATE,

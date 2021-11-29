@@ -3,8 +3,44 @@ const { Router } = require('express');
 
 const router = Router();
 
-router.get('/', (req, res) => {
-    res.render('home');
+router.get('/myReserves', async(req, res) => {
+    const user_id = req.session.userid;
+    try {
+        const reserves = await Reserve.findAll({
+            where: { user_id: user_id }
+        });
+        res.render('reserve/myReserves', { reserves });
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+router.get('/newReserve/:idAccommodation/:idHotel', async(req, res) => {
+    const { idAccommodation, idHotel } = req.params;
+    req.session.hotel_id = idHotel;
+    req.session.accommodation_id = idAccommodation;
+    try {
+        const accommodation = await Accommodation1.findByPk(idAccommodation);
+        const hotels = await Hotel.findByPk(idHotel);
+        res.render('reserve/newReserve', { hotels, accommodation });
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+router.post('/new', async(req, res) => {
+    const hotel_id = req.session.hotel_id;
+    const accommodation_id = req.session.accommodation_id;
+    const user_id = req.session.userid;
+    const status = "Pendente";
+    const { initial_date, final_date, number_of_guests, observation } = req.body;
+
+    try {
+        await Reserve.create({ initial_date, final_date, number_of_guests, observation, status, hotel_id, user_id, accommodation_id });
+        res.redirect('/reserves/myReserves');
+    } catch (err) {
+        console.log(err);
+    }
 });
 
 router.get('/:id', async(req, res) => {
@@ -52,22 +88,5 @@ router.delete('/delete/:id', async(req, res) => {
         console.log(err);
     }
 });
-
-/*
-router.get('/newReserve', (req, res) => {
-    res.render('reserve/newReserve');
-});
-
-router.post('/new', async(req, res) => {
-    const { id, number, initial_date, final_date } = req.body;
-
-    try {
-        await Reserve.create({ id, number, initial_date, final_date });
-        res.redirect('/user');
-    } catch (err) {
-        console.log(err);
-    }
-});
-*/
 
 module.exports = router;

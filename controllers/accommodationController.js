@@ -7,10 +7,8 @@ router.get('/:id', async(req, res) => {
     const { id } = req.params;
     try {
         const accommodation = await Accommodation1.findByPk(id);
-        const reserves = await Reserve.findAll();
-        const hotels = await Accommodation1.findByPk(accommodation.hotel_id);
-        var testando = '2021-10-27';
-        res.render('accommodation/accommodation', { reserves, hotels, accommodation, testando });
+        const hotels = await Hotel.findByPk(accommodation.hotel_id);
+        res.render('accommodation/accommodation', { hotels, accommodation });
     } catch (err) {
         console.log(err);
     }

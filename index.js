@@ -7,8 +7,6 @@ const { User, Hotel } = require('./models');
 const { hotels, users, registrations, logins, accommodation, reserves } = require('./controllers')
 var methodOverride = require('method-override');
 
-app.use(express.static(__dirname + '/public'));
-
 //Traduzir os dados do corpo da requisição para variáveis
 app.use(express.urlencoded({ extended: true }));
 

@@ -3,33 +3,99 @@
 
 <head>
     <meta charset='utf-8'>
-    <title>Página</title>
+    <title>Nova reserva</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
 </head>
 
+<style>
+    #available {
+        display: none;
+    }
+    
+    #unavailable {
+        display: none;
+    }
+</style>
+
 <body>
     <h1> Criar uma nova reserva:</h1>
-    <form action='/user/new' method='POST'>
-        <section>
-            <label>Digite o id: </label>
-            <input type="text" id="id" name="id">
-        </section>
-        <section>
-            <label>Digite o número: </label>
-            <input type="text" id="number" name="number">
-        </section>
-        <section>
-            <label>Digite a data inicial da reserva: </label>
-            <input type="date" id="initial_date" name="initial_date">
-        </section>
-        <section>
-            <label>Digite a data final da reserva: </label>
-            <input type="date" id="final_date" name="final_date">
-        </section>
-        <button>Enviar</button>
-    </form>
-    <a href="/user">Voltar</a>
+    <strong>Hotel:</strong>
+    <%= hotels.company_name %>
+        <br><strong>Quarto: </strong>
+        <%= accommodation.number %>
+            <form action='/reserves/new' method='POST'>
+                <br>
+                <h3>Adicionar datas:</h3>
+                <section>
+                    <label>Escolha uma data inicial: </label>
+                    <input type="date" id="initial_date" name="initial_date" min='2021-11-27' max='2022-11-27' onchange="seeAvailability()" required>
+                </section>
+
+                <section><br>
+                    <label>Escolha uma data final: </label>
+                    <input type="date" id="final_date" name="final_date" min='2021-11-27' max='2022-11-27' onchange="seeAvailability()" required>
+                </section>
+
+                <section><br>
+                    <label>Qual a quantidade de pessoas: </label>
+                    <input type="number" id="number_of_guests" name="number_of_guests" min=1 max=<%=accommodation.number_of_guests %> value=
+                    <%=accommodation.number_of_guests %>>
+                </section>
+
+                <section><br>
+                    <label>Adicione uma observação (opcional): </label>
+                    <textarea id="observation" name="observation" rows="1" cols="20" placeholder="Observação"></textarea>
+                </section>
+
+                <div id="available">
+                    <strong><p>Esta data está disponível!</p></strong>
+                </div>
+
+                <div id="unavailable">
+                    <strong><p>Esta data está indisponível, tente escolher uma outra data!</p></strong>
+                </div>
+                <br>
+
+                <button>Enviar</button>
+            </form>
+
+            <br><a href="/accommodation/<%= accommodation.id %> "><button>Voltar</button></a>
 </body>
+
+<script>
+    var data = new Date();
+    var dd = data.getDate();
+    var mm = data.getMonth() + 1; //0 a 11
+    var yy = data.getFullYear(); // 4 dígitos
+    var today = yy + '-' + mm + '-' + dd;
+    var nextYear = (yy + 1) + '-' + mm + '-' + dd;
+    var dateControl = document.getElementById('initial_date');
+    var dateControl2 = document.getElementById('final_date');
+
+    dateControl.setAttribute("max", nextYear);
+    dateControl.setAttribute("min", today);
+    dateControl2.setAttribute("max", nextYear);
+    dateControl2.setAttribute("min", today);
+
+    var date_available = document.getElementById('available');
+    var date_unavailable = document.getElementById('unavailable');
+
+    function seeAvailability() {
+
+        var reserve_initial_date = document.getElementById('initial_date').value;
+        var reserve_final_date = document.getElementById('final_date').value;
+
+
+        if (reserve_initial_date > today) {
+            date_available.style.display = "block"; //disponível
+            date_unavailable.style.display = "none";
+        } else {
+            date_unavailable.style.display = "block"; //indisponível
+            date_available.style.display = "none";
+        }
+    }
+</script>
+
 
 </html>

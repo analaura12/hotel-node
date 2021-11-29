@@ -1,14 +1,5 @@
 <!DOCTYPE html>
 <html>
-<style>
-    #available {
-        display: none;
-    }
-    
-    #unavailable {
-        display: none;
-    }
-</style>
 
 <head>
     <meta charset='utf-8'>
@@ -66,9 +57,8 @@
             <p class="card-text">
                 CNPJ:
                 <%= hotels.cnpj %><br> Telefone:
-                    <%= hotels.telephone %>
-                        E-mail:
-                        <%= hotels.email %>
+                    <%= hotels.telephone %><br> E-mail:
+                        <%= hotels.email %><br>
                             <%= hotels.address %>,
                                 <%= hotels.number %> -
                                     <%= hotels.district %>,
@@ -98,62 +88,8 @@
         </div>
     </div>
 
-    <h1>Disponibilidade:</h1>
-
-    <section><br>
-        <label>Escolha uma data inicial: </label>
-        <input type="date" id="reserve_initial_date" name="reserve_initial_date" min='2021-11-27' max='2022-11-27' onchange="seeAvailability()">
-    </section>
-
-    <section><br>
-        <label>Escolha uma data final: </label>
-        <input type="date" id="reserve_final_date" name="reserve_final_date" min='2021-11-27' max='2022-11-27' onchange="seeAvailability()">
-    </section>
-
-    <div id="available">
-        <p>Esta data está disponível!</p>
-        Gostaria de reservá-la? <a><button>Clique aqui</button></a>
-    </div>
-
-    <div id="unavailable">
-        <p>Esta data está indisponível, tente escolher uma outra data!
-            <p>
-    </div>
-    <p id="teste"> testee</p>
+    <h3>Gostaria de reservá-la? <a href="/reserves/newReserve/<%= accommodation.id %>/<%= hotels.id %>">Clique aqui</a></h3>
     <br>
-    <a href="/user"><button>Voltar</button></a>
-    <br>
-
 </body>
-<script>
-    var data = new Date();
-    var dd = data.getDate();
-    var mm = data.getMonth() + 1; //0 a 11
-    var yy = data.getFullYear(); // 4 dígitos
-    var today = yy + '-' + mm + '-' + dd;
-    var nextYear = (yy + 1) + '-' + mm + '-' + dd;
-    var dateControl = document.querySelector('input[type="date"]');
-
-    dateControl.setAttribute("max", nextYear);
-    dateControl.setAttribute("min", today);
-    var date_available = document.getElementById('available');
-    var date_unavailable = document.getElementById('unavailable');
-
-    function seeAvailability() {
-        var reserve_initial_date = document.getElementById('reserve_initial_date').value;
-        var reserve_initial_date = document.getElementById('reserve_final_date').value;
-        var count = 0;
-
-        document.getElementById("teste").innerHTML = `testando: ${count}`;
-
-        if (reserve_initial_date > today) {
-            date_available.style.display = "block";
-            date_unavailable.style.display = "none";
-        } else {
-            date_unavailable.style.display = "block";
-            date_available.style.display = "none";
-        }
-    }
-</script>
 
 </html>

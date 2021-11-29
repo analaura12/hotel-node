@@ -9,40 +9,44 @@
 
 <body>
     <h1>
-        Reserva de número da reserva:
-        <%=reserves.number%>
+        ID da reserva:
+        <%=reserves.id%>
     </h1>
     <p>
-        Status da reserva:
+        <Strong>Status da reserva:</Strong>
         <%=reserves.status%>
     </p>
     <p id="initial_date">
-        Data inicial:
+        <strong>Data inicial:</strong>
         <%=reserves.initial_date%>
     </p>
     <p id="final_date">
-        Data final:
+        <strong>Data final:</strong>
         <%=reserves.final_date%>
     </p>
     <p>
-        Hotel:
+        <strong>Hotel:</strong>
         <%=hotels.company_name%>
     </p>
     <p>
-        Quarto:
+        <strong>Quarto:</strong>
         <%=accommodation.number%>
     </p>
     <p>
-        Número de pessoas:
+        <strong>Número de pessoas:</strong>
         <%=reserves.number_of_guests%>
     </p>
-    <br>
-    <p><a href="/user">Voltar</a></p>
-    <p><a href="/reserves/<%=reserves.id%>/editReserve">Editar reserva</a></p>
+    <% if (reserves.observation) { %>
+        <strong>Observação:</strong>
+        <%=reserves.observation%>
+            <% } %>
+                <br>
+                <p><a href="/reserves/myReserves">Voltar</a></p>
+                <p><a href="/reserves/<%=reserves.id%>/editReserve">Editar reserva</a></p>
 
-    <form method="POST" action="/reserves/delete/<%=reserves.id%>?_method=DELETE">
-        <button>Cancelar/Apagar</button>
-    </form>
+                <form method="POST" action="/reserves/delete/<%=reserves.id%>?_method=DELETE">
+                    <button>Cancelar/Apagar</button>
+                </form>
 </body>
 
 </html>

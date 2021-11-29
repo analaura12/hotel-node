@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Minhas reservas</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <h1>Minhas reservas</h1>
+    <ul>
+        <% const countReserves = reserves.length %>
+            <% for (let r of reserves){ %>
+                <li>
+                    <%= r.id %> -
+                        <%= r.initial_date %> -
+                            <%= r.final_date %>
+                                <a href="/reserves/<%= r.id %>">Detalhes</a>
+                </li>
+                <% } %>
+                    <% if (countReserves == 0) {%>
+                        Não há reservas. <br>
+                        <% } %>
+    </ul>
+    <a href="/user"><button>Home</button></a>
+</body>
+
+</html>

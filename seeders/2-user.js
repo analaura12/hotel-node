@@ -1,5 +1,8 @@
 'use strict';
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 module.exports = {
     up: async(queryInterface, Sequelize) => {
         /** Add seed commands here.*/
@@ -12,18 +15,18 @@ module.exports = {
                 cellphone: '12900000000',
                 city: 'sem cidade',
                 state: 'SP',
-                password: 'admin123',
+                password: await bcrypt.hash('admin123', saltRounds),
                 email: 'admin@admin'
             },
             {
                 first_name: 'Bruna',
                 last_name: 'Lima',
-                cpf: '43350958800',
+                cpf: '43350959800',
                 birth_date: '2001-10-03',
                 cellphone: '1299538379',
                 city: 'São José dos Campos',
                 state: 'SP',
-                password: 'admin123',
+                password: await bcrypt.hash('admin123', saltRounds),
                 email: 'teste@teste'
             },
         ], {});

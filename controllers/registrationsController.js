@@ -22,6 +22,7 @@ router.get('/user', (req, res) => {
 
 router.post('/user', async(req, res) => {
     const { first_name, last_name, cpf, birth_date, cellphone, city, state, password, email } = req.body;
+    console.log(first_name);
     try {
         await User.create({ first_name, last_name, cpf, birth_date, cellphone, city, state, password, email });
         res.redirect('/login');

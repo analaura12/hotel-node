@@ -71,7 +71,7 @@ router.patch('/:id', async(req, res) => {
         await Reserve.update({ initial_date, final_date }, {
             where: { id: req.params.id }
         });
-        res.redirect('/user/');
+        res.redirect('/user');
 
     } catch (err) {
         console.log(err);

@@ -3,26 +3,40 @@
 
 <head>
     <meta charset='utf-8'>
-    <title>Page Title</title>
+    <title>Editar reserva</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
-    <h1>Editar reserva</h1>
-    <form method="POST" action="/reserves/<%= var_reserve.id %>?_method=PATCH">
-        <%= var_reserve.initial_date %>
-            <section><br>
-                <label>Digite a data inicial da reserva: </label>
-                <input type="date" id="initial_date" name="initial_date" min='2021-11-27' max='2022-11-27' value="<%= var_reserve.initial_date %>">
-            </section>
+    <div class="card text-center py-2 col-md-6" style="margin: 0 auto; margin-top: 30px; margin-bottom: 30px;">
+        <h1>Editar reserva</h1>
+        <div class="card-body text-left">
+            <form method="POST" action="/reserves/<%= var_reserve.id %>?_method=PATCH">
+                Data inicial:
+                <%= var_reserve.initial_date %><br> Data final:
+                    <%= var_reserve.final_date %><br>
 
-            <section><br>
-                <label>Digite a data final da reserva: </label>
-                <input type="date" id="final_date" name="final_date" min='2021-11-27' max='2022-11-27' value="<%= var_reserve.final_date %>">
-            </section>
-            <br>
-            <button type="submit">Ver disponibilidade</button>
-    </form>
+                        <div class="mb-3">
+                            <label class="form-label">Digite a data inicial da reserva:</label>
+                            <input class="form-control" type="date" id="initial_date" name="initial_date" min='2021-11-27' max='2022-11-27' value="<%= var_reserve.initial_date %>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Digite a data final da reserva:</label>
+                            <input class="form-control" type="date" id="final_date" name="final_date" min='2021-11-27' max='2022-11-27' value="<%= var_reserve.final_date %>" required>
+                        </div>
+                        <br>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-bottom: 10px;">
+                            <button type="submit" class="btn btn-primary me-md-2">Ver disponibilidade</button>
+                        </div>
+            </form>
+            <a href="/reserves/<%=var_reserve.id%>"><button class="btn btn-primary me-md-2">Voltar</button></a>
+        </div>
+    </div>
 </body>
 <script>
     var dd = data.getDate();
@@ -30,6 +44,7 @@
     var yy = data.getFullYear(); // 4 dígitos
     var today = yy + '-' + mm + '-' + dd;
     var nextYear = (yy + 1) + '-' + mm + '-' + dd;
+
     var dateControl = document.getElementById('initial_date');
     var dateControl2 = document.getElementById('final_date');
 

@@ -7,89 +7,102 @@
         <%= accommodation.number %>
     </title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 
 </head>
 
 <body>
-    <h1>Sobre a acomodação</h1>
-    <div class="card mb-3">
-        <img src="/images/registration/<%=accommodation.photo%>" class="img-fluid rounded-start" alt="..." style="max-width:30%; height:auto;">
-
-        <div class="card-body">
-            <h3 class="card-title">Acomodação:
-                <%= accommodation.number %>
-            </h3>
-            <p class="card-text">
-                <strong>Número de pessoas:</strong>
-                <%= accommodation.number_of_guests %><br>
-                    <% if(accommodation.description) { %>
-                        <strong>Descrição:</strong>
-                        <%= accommodation.description %><br>
-                            <% } %>
-                                <% if(accommodation.convenience) { %>
-                                    <strong>Comodidade:</strong>
-                                    <%= accommodation.convenience %><br>
+    <div class="container" style="margin: 0 auto; margin-top: 30px; margin-bottom: 30px;">
+        <h1>Sobre a acomodação</h1>
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="/images/registration/<%=accommodation.photo%>" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Acomodação:
+                            <%= accommodation.number %>
+                        </h5>
+                        <p class="card-text"> <strong>Número de pessoas:</strong>
+                            <%= accommodation.number_of_guests %><br>
+                                <% if(accommodation.description) { %>
+                                    <strong>Descrição:</strong>
+                                    <%= accommodation.description %><br>
                                         <% } %>
-                                            <% if(accommodation.observation) { %>
-                                                <strong>Observações:</strong>
-                                                <%= accommodation.observation %><br>
+                                            <% if(accommodation.convenience) { %>
+                                                <strong>Comodidade:</strong>
+                                                <%= accommodation.convenience %><br>
                                                     <% } %>
-
-
-
-            </p>
-            <p class="card-text">
-                <h4 class="text-muted">R$
-                    <%= accommodation.value %>
-                </h4>
-            </p>
+                                                        <% if(accommodation.observation) { %>
+                                                            <strong>Observações:</strong>
+                                                            <%= accommodation.observation %><br>
+                                                                <% } %>
+                        </p>
+                        <p class="card-text">
+                            <h4 class="text-muted">R$
+                                <%= accommodation.value %>
+                            </h4>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <br>
-    <h1>Sobre o Hotel:</h1>
-    <div class="card mb-3">
-        <img src="/images/registration/<%=hotels.photo%>" class="img-fluid rounded-start" alt="..." style="max-width:30%; height:auto;">
+        <br>
 
-        <div class="card-body">
-            <h3 class="card-title">
-                <%= hotels.company_name %>
-            </h3>
-            <p class="card-text">
-                CNPJ:
-                <%= hotels.cnpj %><br> Telefone:
-                    <%= hotels.telephone %><br> E-mail:
-                        <%= hotels.email %><br>
-                            <%= hotels.address %>,
-                                <%= hotels.number %> -
-                                    <%= hotels.district %>,
-                                        <%= hotels.city %> -
-                                            <%= hotels.state %>,
-                                                <%= hotels.cep %>.
-                                                    <%= hotels.country %>
-            </p>
-            <p>
-                <% if(hotels.social_reason) { %>
-                    <strong>Razão social:</strong>
-                    <%= hotels.social_reason %><br>
-                        <% } %>
-                            <% if(hotels.convenience) { %>
-                                <strong>Comodidade:</strong>
-                                <%= hotels.convenience %><br>
+        <h1>Sobre o Hotel:</h1>
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="/images/registration/<%=hotels.photo%>" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= hotels.company_name %>
+                        </h5>
+                        <p class="card-text">CNPJ:
+                            <%= hotels.cnpj %><br> Telefone:
+                                <%= hotels.telephone %><br> E-mail:
+                                    <%= hotels.email %><br>
+                                        <%= hotels.address %>,
+                                            <%= hotels.number %> -
+                                                <%= hotels.district %>,
+                                                    <%= hotels.city %> -
+                                                        <%= hotels.state %>,
+                                                            <%= hotels.cep %>.
+                                                                <%= hotels.country %>
+                        </p>
+                        <p>
+                            <% if(hotels.social_reason) { %>
+                                <strong>Razão social:</strong>
+                                <%= hotels.social_reason %><br>
                                     <% } %>
-                                        <% if(hotels.observation) { %>
-                                            <strong>Observação:</strong>
-                                            <%= hotels.observation %><br>
+                                        <% if(hotels.convenience) { %>
+                                            <strong>Comodidade:</strong>
+                                            <%= hotels.convenience %><br>
                                                 <% } %>
-                                                    <% if(hotels.avaliation) { %>
-                                                        <strong>Avaliação:</strong>
-                                                        <%= hotels.avaliation %><br>
+                                                    <% if(hotels.observation) { %>
+                                                        <strong>Observação:</strong>
+                                                        <%= hotels.observation %><br>
                                                             <% } %>
-            </p>
+                                                                <% if(hotels.avaliation) { %>
+                                                                    <strong>Avaliação:</strong>
+                                                                    <%= hotels.avaliation %><br>
+                                                                        <% } %>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <h3>Gostaria de reservá-la? <a href="/reserves/newReserve/<%= accommodation.id %>/<%= hotels.id %>">Clique aqui</a></h3>
-    <br>
+        <h3 style="text-align: center;">Gostaria de reservá-la? <a href="/reserves/newReserve/<%= accommodation.id %>/<%= hotels.id %>">Clique aqui</a></h3>
+        <br>
+        <a href="/user"><button class="btn btn-primary me-md-2">Voltar</button></a>
+    </div>
 </body>
 
 </html>

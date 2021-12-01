@@ -6,59 +6,70 @@
     <title>Profile</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap">
 </head>
 
 <body>
-    <h1>Meu perfil</h1>
-    <form method="POST" action="/user/<%= var_user.id %>?_method=PATCH" enctype="multipart/form-data">
-        <section>
-            <label>Nome: </label>
-            <textarea name="first_name" cols="15" rows="1" required><%=var_user.first_name%></textarea>
-        </section>
-        <section><br>
-            <label>Sobrenome:</label>
-            <textarea name="last_name" cols="15" rows="1" required><%=var_user.last_name%></textarea>
-        </section>
-        <section><br>
-            <label>CPF: </label>
-            <textarea name="cpf" cols="15" rows="1" minlength="11" maxlength="11" required><%=var_user.cpf%></textarea>
-        </section>
-        <section><br>
-            <label>Data de nascimento: </label>
-            <textarea name="birth_date" cols="15" rows="1" required><%=var_user.birth_date%></textarea>
-        </section>
-        <section><br>
-            <label>Celular:</label>
-            <textarea name="cellphone" cols="15" rows="1" minlength="11" maxlength="11" required><%=var_user.cellphone%></textarea>
-        </section>
-        <section><br>
-            <label>Cidade:</label>
-            <textarea name="city" cols="15" rows="1" required><%=var_user.city%></textarea>
-        </section>
-        <section><br>
-            <label>Estado:</label>
-            <textarea name="state" cols="15" rows="1" minlength="2" maxlength="2" required><%=var_user.state%></textarea>
-        </section>
-        <section><br>
-            <label>Senha:</label>
-            <textarea name="password" cols="15" rows="1" minlength="5" maxlength="8" required><%=var_user.password%></textarea>
-        </section>
-        <section><br>
-            <label>E-mail:</label>
-            <textarea name="email" cols="15" rows="1" required><%=var_user.email%></textarea>
-        </section>
-        <section>
-            <label>Foto de perfil atual:<%=var_user.photo%></label>
-            <br><label>Atualize/adicione sua foto de perfil:</label><input type="file" name="photo">
-        </section>
-        <br>
-        <button type="submit">Salvar</button> <a href="/user"><button>Voltar</button></a>
-    </form>
-
-    <br>
-    <form method="POST" action="/user/profile/<%=var_user.id%>?_method=DELETE">
-        <br><button>Apagar perfil</button>
-    </form>
+    <div class="card text-center py-2 col-md-6" style="margin: 0 auto; margin-top: 30px; margin-bottom: 30px;">
+        <h1>Meu perfil</h1>
+        <div class="card-body text-left">
+            <form method="POST" action="/user/<%= var_user.id %>?_method=PATCH" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label">Nome:</label>
+                    <input class="form-control" type="text" id="first_name" name="first_name" value="<%=var_user.first_name%>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Sobrenome:</label>
+                    <input class="form-control" type="text" id="last_name" name="last_name" value="<%=var_user.last_name%>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">CPF:</label>
+                    <input class="form-control" type="text" id="cpf" name="cpf" minlength="11" maxlength="11" value="<%=var_user.cpf%>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Data de nascimento:</label>
+                    <input class="form-control" type="text" id="birth_date" name="birth_date" value="<%=var_user.birth_date%>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Celular:</label>
+                    <input class="form-control" type="text" id="cellphone" name="cellphone" minlength="11" maxlength="11" value="<%=var_user.cellphone%>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Cidade:</label>
+                    <input class="form-control" type="text" id="city" name="city" value="<%=var_user.city%>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Estado:</label>
+                    <input class="form-control" type="text" id="state" name="state" minlength="2" maxlength="2" value="<%=var_user.state%>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">E-mail:</label>
+                    <input class="form-control" type="email" id="email" name="email" value="<%=var_user.email%>" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Senha:</label>
+                    <input class="form-control" type="password" id="password" name="password" minlength="5" maxlength="8" value="<%=var_user.password%>" required>
+                </div>
+                <div>
+                    <% if (var_user.photo) { %>
+                        <label>Foto de perfil atual:<%=var_user.photo%><br></label>
+                        <% } %>
+                            <label>Atualize/adicione sua foto de perfil:</label><br><input type="file" name="photo">
+                            </section>
+                </div>
+                <div><br>
+                    <button type="submit" class="btn btn-primary me-md-2">Salvar</button> <a href="/user"><button class="btn btn-primary me-md-2">Voltar</button></a>
+                </div>
+            </form>
+            <form method="POST" action="/user/profile<%=var_user.id%>?_method=DELETE">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-primary me-md-2">Apagar perfil</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>

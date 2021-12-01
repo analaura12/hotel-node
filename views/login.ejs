@@ -5,28 +5,40 @@
     <meta charset='utf-8'>
     <title>Login</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 
 <body>
-    <h1>Login</h1>
-    <form action='/login' method='POST'>
-        <section><br>
-            <label>E-mail:</label>
-            <input type="email" id="email" name="email" required>
-        </section>
-        <section><br>
-            <label>Senha:</label>
-            <input type="password" id="password" name="password" minlength="5" maxlength="8" required>
-        </section>
-        <br> Você é: <br>
-        <input type="radio" name="type" value="user" checked>Usuário <input type="radio" name="type" value="hotel">Hotel<br>
-        <br>
-        <button>Enviar</button>
-    </form>
-    <br>
-    <a href="/registration/user">É um usuário e ainda não possui cadastro? Clique aqui!</a><br><br>
+    <div class="card text-center py-2 col-md-6" style="margin: 0 auto; margin-top: 30px;">
+        <h1>Login</h1>
+        <div class="card-body text-left">
+            <form action='/login' method='POST'>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">E-mail:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Senha:</label>
+                    <input type="password" id="password" class="form-control" name="password" minlength="5" maxlength="8" required>
+                </div>
+                <p>
+                    Você é: <br>
+                    <input type="radio" name="type" value="user" checked> Usuário <input type="radio" name="type" value="hotel"> Hotel<br>
+                </p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-primary me-md-2">Enviar</button>
+                </div>
+            </form>
 
-    <a href="/registration/hotel">É um hotel e ainda não possui cadastro? Clique aqui!</a>
+            <a href="/registration/user">É um usuário e ainda não possui cadastro? Clique aqui!</a><br>
+            <a href="/registration/hotel">É um hotel e ainda não possui cadastro? Clique aqui!</a>
+        </div>
+    </div>
 </body>
 
 </html>

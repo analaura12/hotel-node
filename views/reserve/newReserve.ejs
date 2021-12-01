@@ -6,6 +6,10 @@
     <title>Nova reserva</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <style>
@@ -19,48 +23,52 @@
 </style>
 
 <body>
-    <h1> Criar uma nova reserva:</h1>
-    <strong>Hotel:</strong>
-    <%= hotels.company_name %>
-        <br><strong>Quarto: </strong>
-        <%= accommodation.number %>
-            <form action='/reserves/new' method='POST'>
-                <br>
-                <h3>Adicionar datas:</h3>
-                <section>
-                    <label>Escolha uma data inicial: </label>
-                    <input type="date" id="initial_date" name="initial_date" min='2021-11-27' max='2022-11-27' onchange="seeAvailability()" required>
-                </section>
-
-                <section><br>
-                    <label>Escolha uma data final: </label>
-                    <input type="date" id="final_date" name="final_date" min='2021-11-27' max='2022-11-27' onchange="seeAvailability()" required>
-                </section>
-
-                <section><br>
-                    <label>Qual a quantidade de pessoas: </label>
-                    <input type="number" id="number_of_guests" name="number_of_guests" min=1 max=<%=accommodation.number_of_guests %> value=
+    <div class="container" style="margin: 0 auto; margin-top: 30px; margin-bottom: 30px;">
+        <h1> Criar uma nova reserva:</h1>
+        <form action='/reserves/new' method='POST'>
+            <div class="card col-md">
+                <strong>Hotel:</strong>
+                <%= hotels.company_name %>
+                    <br><strong>Quarto: </strong>
+                    <%= accommodation.number %>
+            </div>
+            <br>
+            <h3>Adicionar datas:</h3>
+            <div class="card col-md">
+                <div class="mb-3" style="margin-top: 10px;">
+                    <label class="form-label">Escolha uma data inicial:</label>
+                    <input type="date" class="form-control" id="initial_date" name="initial_date" min='2021-11-27' max='2022-11-27' onchange="seeAvailability()" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Escolha uma data final: </label>
+                    <input type="date" class="form-control" id="final_date" name="final_date" min='2021-11-27' max='2022-11-27' onchange="seeAvailability()" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Qual a quantidade de pessoas: </label>
+                    <input type="number" class="form-control" id="number_of_guests" name="number_of_guests" min=1 max=<%=accommodation.number_of_guests %> value=
                     <%=accommodation.number_of_guests %>>
-                </section>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Adicione uma observação (opcional):</label>
+                    <textarea class="form-control" id="observation" name="observation" rows="1" cols="20" placeholder="Observação"></textarea>
+                </div>
 
-                <section><br>
-                    <label>Adicione uma observação (opcional): </label>
-                    <textarea id="observation" name="observation" rows="1" cols="20" placeholder="Observação"></textarea>
-                </section>
-
-                <div id="available">
+                <div id="available" style="color: green;">
                     <strong><p>Esta data está disponível!</p></strong>
                 </div>
 
-                <div id="unavailable">
+                <div id="unavailable" style="color: red;">
                     <strong><p>Esta data está indisponível, tente escolher uma outra data!</p></strong>
                 </div>
-                <br>
 
-                <button>Enviar</button>
-            </form>
-
-            <br><a href="/accommodation/<%= accommodation.id %> "><button>Voltar</button></a>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-bottom: 10px;">
+                    <button class="btn btn-primary me-md-2">Enviar</button>
+                </div>
+        </form>
+        </div>
+        <div style="margin-top: 10px; margin-bottom: 30px;">
+            <a href="/accommodation/<%= accommodation.id %>"><button class="btn btn-primary me-md-2">Voltar</button></a>
+        </div>
 </body>
 
 <script>

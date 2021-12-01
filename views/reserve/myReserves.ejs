@@ -5,25 +5,34 @@
     <meta charset='utf-8'>
     <title>Minhas reservas</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
-    <h1>Minhas reservas</h1>
-    <ul>
-        <% const countReserves = reserves.length %>
-            <% for (let r of reserves){ %>
-                <li>
-                    <%= r.id %> -
-                        <%= r.initial_date %> -
-                            <%= r.final_date %>
-                                <a href="/reserves/<%= r.id %>">Detalhes</a>
-                </li>
-                <% } %>
-                    <% if (countReserves == 0) {%>
-                        Não há reservas. <br>
-                        <% } %>
-    </ul>
-    <a href="/user"><button>Home</button></a>
+    <div class="card text-center py-2 col-md-10" style="margin: 0 auto; margin-top: 30px; margin-bottom: 30px;">
+        <h1>Minhas reservas</h1>
+        <ul>
+            <% const countReserves = reserves.length %>
+                <% for (let r of reserves){ %>
+                    <li>
+                        <%= r.id %> -
+                            <%= r.initial_date %> -
+                                <%= r.final_date %>
+                                    <a href="/reserves/<%= r.id %>">Detalhes</a>
+                    </li>
+                    <% } %>
+                        <% if (countReserves == 0) {%>
+                            Não há reservas. <br>
+                            <% } %>
+        </ul>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-bottom: 10px;">
+            <a href="/user"><button class="btn btn-primary me-md-2">Home</button></a>
+        </div>
+    </div>
 </body>
 
 </html>

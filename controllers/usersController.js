@@ -35,12 +35,12 @@ router.patch('/:id', multer.single('photo'), async(req, res) => {
             await User.update({ first_name, last_name, cpf, birth_date, cellphone, city, state, password, email, photo }, {
                 where: { id: req.params.id }
             });
-            res.redirect('/user/');
+            res.redirect('/user');
         } catch (err) {
             await User.update({ first_name, last_name, cpf, birth_date, cellphone, city, state, password, email }, {
                 where: { id: req.params.id }
             });
-            res.redirect('/user/');
+            res.redirect('/user');
         }
     } catch (err) {
         console.log(err);

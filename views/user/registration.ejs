@@ -5,51 +5,59 @@
     <meta charset='utf-8'>
     <title>Cadastro</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap">
 </head>
 
 <body>
-    <h1>Bem-vindo!</h1>
-    <form action='/registration/user' method='POST' enctype="multipart/form-data">
-        <section>
-            <label>Qual é o seu nome?</label>
-            <input type="text" id="first_name" name="first_name" required>
-        </section>
-        <section><br>
-            <label>Qual é o seu sobrenome?</label>
-            <input type="text" id="last_name" name="last_name" required>
-        </section>
-        <section><br>
-            <label>Digite seu cpf: </label>
-            <input type="text" id="cpf" name="cpf" minlength="11" maxlength="11" required>
-        </section>
-        <section><br>
-            <label>Digite sua data de nascimento: </label>
-            <input type="date" id="birth_date" name="birth_date" required>
-        </section>
-        <section><br>
-            <label>Digite seu celular:</label>
-            <input type="text" id="cellphone" name="cellphone" minlength="11" maxlength="11" required>
-        </section>
-        <section><br>
-            <label>Digite sua cidade:</label>
-            <input type="text" id="city" name="city" required>
-        </section>
-        <section><br>
-            <label>Digite a sigla do seu estado:</label>
-            <input type="text" id="state" name="state" minlength="2" maxlength="2" required>
-        </section>
-        <section><br>
-            <label>Digite sua senha:</label>
-            <input type="password" id="password" name="password" minlength="5" maxlength="8" required>
-        </section>
-        <section><br>
-            <label>Digite seu email:</label>
-            <input type="email" id="email" name="email" required>
-        </section>
-        <br><button>Enviar</button>
-    </form>
-    <a href="/login">Já possui cadastro? Clique aqui!</a>
+    <div class="card text-center py-2 col-md-6" style="margin: 0 auto; margin-top: 30px; margin-bottom: 30px;">
+        <h1>Cadastro de usuários</h1>
+        <div class="card-body text-left">
+            <form action='/registration/user' method='POST' enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label">Qual é o seu nome?</label>
+                    <input class="form-control" type="text" id="first_name" name="first_name" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Qual é o seu sobrenome?</label>
+                    <input class="form-control" type="text" id="last_name" name="last_name" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Digite seu cpf:</label>
+                    <input class="form-control" type="text" id="cpf" name="cpf" minlength="11" maxlength="11" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Digite sua data de nascimento:</label>
+                    <input class="form-control" type="date" id="birth_date" name="birth_date" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Digite seu celular:</label>
+                    <input class="form-control" type="text" id="cellphone" name="cellphone" minlength="11" maxlength="11" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Digite sua cidade:</label>
+                    <input class="form-control" type="text" id="city" name="city" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Digite a sigla do seu estado:</label>
+                    <input class="form-control" type="text" id="state" name="state" minlength="2" maxlength="2" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Digite sua senha:</label>
+                    <input class="form-control" type="password" id="password" name="password" minlength="5" maxlength="8" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Digite seu email:</label>
+                    <input class="form-control" type="email" id="email" name="email" required>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-primary me-md-2">Enviar</button>
+                </div>
+            </form>
+        </div>
+        <a href="/login">Já possui cadastro? Clique aqui!</a>
+    </div>
 </body>
 
 </html>

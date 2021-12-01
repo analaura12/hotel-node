@@ -5,48 +5,58 @@
     <meta charset='utf-8'>
     <title>Reserva</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
-    <h1>
-        ID da reserva:
-        <%=reserves.id%>
-    </h1>
-    <p>
-        <Strong>Status da reserva:</Strong>
-        <%=reserves.status%>
-    </p>
-    <p id="initial_date">
-        <strong>Data inicial:</strong>
-        <%=reserves.initial_date%>
-    </p>
-    <p id="final_date">
-        <strong>Data final:</strong>
-        <%=reserves.final_date%>
-    </p>
-    <p>
-        <strong>Hotel:</strong>
-        <%=hotels.company_name%>
-    </p>
-    <p>
-        <strong>Quarto:</strong>
-        <%=accommodation.number%>
-    </p>
-    <p>
-        <strong>Número de pessoas:</strong>
-        <%=reserves.number_of_guests%>
-    </p>
-    <% if (reserves.observation) { %>
-        <strong>Observação:</strong>
-        <%=reserves.observation%>
-            <% } %>
-                <br>
-                <p><a href="/reserves/myReserves">Voltar</a></p>
-                <p><a href="/reserves/<%=reserves.id%>/editReserve">Editar reserva</a></p>
-
-                <form method="POST" action="/reserves/delete/<%=reserves.id%>?_method=DELETE">
-                    <button>Cancelar/Apagar</button>
-                </form>
+    <div class="card text-center py-2 col-md-6" style="margin: 0 auto; margin-top: 30px; margin-bottom: 30px;">
+        <h1>
+            ID da reserva:
+            <%=reserves.id%>
+        </h1>
+        <div class="card-body text-left">
+            <p>
+                <Strong>Status da reserva:</Strong>
+                <%=reserves.status%>
+            </p>
+            <p id="initial_date">
+                <strong>Data inicial:</strong>
+                <%=reserves.initial_date%>
+            </p>
+            <p id="final_date">
+                <strong>Data final:</strong>
+                <%=reserves.final_date%>
+            </p>
+            <p>
+                <strong>Hotel:</strong>
+                <%=hotels.company_name%>
+            </p>
+            <p>
+                <strong>Quarto:</strong>
+                <%=accommodation.number%>
+            </p>
+            <p>
+                <strong>Número de pessoas:</strong>
+                <%=reserves.number_of_guests%>
+            </p>
+            <% if (reserves.observation) { %>
+                <strong>Observação:</strong>
+                <%=reserves.observation%>
+                    <% } %>
+                        <br>
+                        <a href="/reserves/myReserves"><button class="btn btn-primary me-md-2">Voltar</button></a>
+                        <a href="/reserves/<%=reserves.id%>/editReserve"><button class="btn btn-primary me-md-2">Editar reserva</button></a>
+                        <form method="POST" action="/reserves/delete/<%=reserves.id%>?_method=DELETE">
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-bottom: 10px;">
+                                <button class="btn btn-primary me-md-2">Cancelar/Apagar</button>
+                            </div>
+                        </form>
+        </div>
+    </div>
 </body>
 
 </html>

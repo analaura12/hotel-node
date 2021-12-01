@@ -3,6 +3,9 @@ const { Router } = require('express');
 const multer = require('./multer');
 const router = Router();
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 router.get('/', async(req, res) => {
     const idUser = req.session.userid;
     try {
@@ -29,15 +32,16 @@ router.get('/profile', async(req, res) => {
 
 router.patch('/:id', multer.single('photo'), async(req, res) => {
     const { first_name, last_name, cpf, birth_date, cellphone, city, state, password, email } = req.body;
+    password2 = await bcrypt.hash(password, saltRounds);
     try {
         try {
             const photo = req.file.filename;
-            await User.update({ first_name, last_name, cpf, birth_date, cellphone, city, state, password, email, photo }, {
+            await User.update({ first_name, last_name, cpf, birth_date, cellphone, city, state, password2, email, photo }, {
                 where: { id: req.params.id }
             });
             res.redirect('/user');
         } catch (err) {
-            await User.update({ first_name, last_name, cpf, birth_date, cellphone, city, state, password, email }, {
+            await User.update({ first_name, last_name, cpf, birth_date, cellphone, city, state, password2, email }, {
                 where: { id: req.params.id }
             });
             res.redirect('/user');

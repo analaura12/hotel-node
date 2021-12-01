@@ -1,4 +1,4 @@
-# hotel-node #
+# hotel-node
 
 É necessário:
 

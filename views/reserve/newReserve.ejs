@@ -37,11 +37,11 @@
             <div class="card col-md">
                 <div class="mb-3" style="margin-top: 10px;">
                     <label class="form-label">Escolha uma data inicial:</label>
-                    <input type="date" class="form-control" id="initial_date" name="initial_date" min='2021-11-27' max='2022-11-27' onchange="seeAvailability()" required>
+                    <input type="date" class="form-control" id="initial_date" name="initial_date" min="2021-11-30" onchange="initial_date_function()" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Escolha uma data final: </label>
-                    <input type="date" class="form-control" id="final_date" name="final_date" min='2021-11-27' max='2022-11-27' onchange="seeAvailability()" required>
+                    <input type="date" class="form-control" id="final_date" name="final_date" min="2021-11-30" max='2022-11-27' onchange="seeAvailability()" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Qual a quantidade de pessoas: </label>
@@ -65,37 +65,68 @@
                     <button class="btn btn-primary me-md-2">Enviar</button>
                 </div>
         </form>
-        </div>
-        <div style="margin-top: 10px; margin-bottom: 30px;">
-            <a href="/accommodation/<%= accommodation.id %>"><button class="btn btn-primary me-md-2">Voltar</button></a>
-        </div>
+        <% const teste23 = reserves.length  %>
+            teste 23:
+            <%= teste23 %><br> TESTE:
+                <%= reserves[0].initial_date %>;
+                    <div id="teste">
+                    </div>
+                    </div>
+                    <div style="margin-top: 10px; margin-bottom: 30px;">
+                        <a href="/accommodation/<%= accommodation.id %>"><button class="btn btn-primary me-md-2">Voltar</button></a>
+                    </div>
 </body>
-
-<script>
+<script type="text/javascript">
     var data = new Date();
-    var dd = data.getDate();
-    var mm = data.getMonth() + 1; //0 a 11
-    var yy = data.getFullYear(); // 4 dígitos
-    var today = yy + '-' + mm + '-' + dd;
-    var nextYear = (yy + 1) + '-' + mm + '-' + dd;
-    var dateControl = document.getElementById('initial_date');
-    var dateControl2 = document.getElementById('final_date');
+    var dia = String(data.getDate()).padStart(2, '0');
+    var mes = String(data.getMonth() + 1).padStart(2, '0');
+    var ano = data.getFullYear();
+    dataAtual = ano + '-' + mes + '-' + dia;
 
-    dateControl.setAttribute("max", nextYear);
-    dateControl.setAttribute("min", today);
-    dateControl2.setAttribute("max", nextYear);
-    dateControl2.setAttribute("min", today);
+    var initial_date = document.getElementById('initial_date');
+    initial_date.setAttribute("min", dataAtual);
 
-    var date_available = document.getElementById('available');
-    var date_unavailable = document.getElementById('unavailable');
+    var count = <%= reserves.length %>;
+    //var datateste = <%= reserves[0].initial_date %>;
+    var teste = document.getElementById('teste');
+    teste.innerHTML = <%= teste23 %>;
+
+    function initial_date_function() {
+        var reserve_initial_date = document.getElementById('initial_date').value;
+        diaDepois();
+        seeAvailability();
+    }
+
+    function diaDepois() {
+        var inicial = document.getElementById("initial_date").value;
+        var partes = inicial.split("-");
+        var ano = partes[0];
+        var mes = partes[1] - 1;
+        var dia = partes[2];
+
+        inicial = new Date(ano, mes, dia);
+        final = new Date(inicial);
+        final.setDate(final.getDate() + 1);
+
+        var dd = ("0" + final.getDate()).slice(-2);
+        var mm = ("0" + (final.getMonth() + 1)).slice(-2);
+        var y = final.getFullYear();
+        var dataformatada = y + '-' + mm + '-' + dd;
+
+        //Configurando a data do input "final_date"
+        var final_date = document.getElementById('final_date');
+        final_date.setAttribute("min", dataformatada);
+    }
 
     function seeAvailability() {
-
+        var date_available = document.getElementById('available');
+        var date_unavailable = document.getElementById('unavailable');
         var reserve_initial_date = document.getElementById('initial_date').value;
-        var reserve_final_date = document.getElementById('final_date').value;
 
+        var teste_dataInicial = "2021-12-05";
+        var teste_dataFinal = "2021-12-10";
 
-        if (reserve_initial_date > today) {
+        if (reserve_initial_date < teste_dataInicial && reserve_initial_date <= teste_dataFinal) {
             date_available.style.display = "block"; //disponível
             date_unavailable.style.display = "none";
         } else {
@@ -104,6 +135,5 @@
         }
     }
 </script>
-
 
 </html>

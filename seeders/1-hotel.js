@@ -42,7 +42,7 @@ module.exports = {
                 company_name: 'Renaissance Sao Paulo Hotel',
                 telephone: '1130692233',
                 email: 'admin@teste',
-                password: 'admin123',
+                password: await bcrypt.hash('admin123', saltRounds),
                 address: 'Alameda Santos',
                 district: 'Jardim Paulista',
                 cep: '01419002',

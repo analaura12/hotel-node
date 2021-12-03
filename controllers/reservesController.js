@@ -22,7 +22,8 @@ router.get('/newReserve/:idAccommodation/:idHotel', async(req, res) => {
     try {
         const accommodation = await Accommodation1.findByPk(idAccommodation);
         const hotels = await Hotel.findByPk(idHotel);
-        res.render('reserve/newReserve', { hotels, accommodation });
+        const reserves = await Reserve.findAll();
+        res.render('reserve/newReserve', { hotels, accommodation, reserves });
     } catch (err) {
         console.log(err);
     }

@@ -14,7 +14,7 @@
     <div class="card text-center py-2 col-md-6" style="margin: 0 auto; margin-top: 30px; margin-bottom: 30px;">
         <h1>Cadastro de usuários</h1>
         <div class="card-body text-left">
-            <form action='/registration/user' method='POST' enctype="multipart/form-data">
+            <form action='/registration/user' method='POST'>
                 <div class="mb-3">
                     <label class="form-label">Qual é o seu nome?</label>
                     <input class="form-control" type="text" id="first_name" name="first_name" required>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Digite sua data de nascimento:</label>
-                    <input class="form-control" type="date" id="birth_date" name="birth_date" required>
+                    <input class="form-control" type="date" id="birth_date" min="1900-12-02" name="birth_date" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Digite seu celular:</label>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Digite sua senha:</label>
-                    <input class="form-control" type="password" id="password" name="password" minlength="5" maxlength="8" required>
+                    <input class="form-control" type="password" id="password2" name="password2" minlength="5" maxlength="8" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Digite seu email:</label>
@@ -59,5 +59,15 @@
         <a href="/login">Já possui cadastro? Clique aqui!</a>
     </div>
 </body>
+<script type="text/javascript">
+    var data = new Date();
+    var dia = String(data.getDate()).padStart(2, '0');
+    var mes = String(data.getMonth() + 1).padStart(2, '0');
+    var ano = data.getFullYear() - 18;
+    dataAtual = ano + '-' + mes + '-' + dia;
+
+    var initial_date = document.getElementById('birth_date');
+    initial_date.setAttribute("max", dataAtual);
+</script>
 
 </html>

@@ -27,7 +27,7 @@ router.get('/user', (req, res) => {
 router.post('/user', async(req, res) => {
     const { first_name, last_name, cpf, birth_date, cellphone, city, state, password2, email } = req.body;
     try {
-        password = await bcrypt.hash(password2, saltRounds);
+        const password = await bcrypt.hash(password2, saltRounds);
         await User.create({ first_name, last_name, cpf, birth_date, cellphone, city, state, password, email });
         res.redirect('/login');
     } catch (err) {

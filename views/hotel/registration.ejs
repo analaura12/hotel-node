@@ -5,107 +5,107 @@
     <meta charset='utf-8'>
     <title>Cadastro</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-	<link rel="stylesheet" type="text/css" href="/register-hotel/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/register-hotel/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="/register-hotel/css/util.css">
-	<link rel="stylesheet" type="text/css" href="/register-hotel/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/register-hotel/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/register-hotel/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/register-hotel/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/register-hotel/css/main.css">
 </head>
 
 <body style="background-color: #999999;">
-	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="login100-more" style="background-image: url('/images/bg_1.jpg');"></div>
 
-			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-				<form class="login100-form validate-form" action='/registration/hotel' method='POST' enctype="multipart/form-data">
-					<span class="login100-form-title p-b-59">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="login100-more" style="background-image: url('/images/bg_1.jpg');"></div>
+
+            <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+                <form class="login100-form validate-form" action='/registration/hotel' method='POST' enctype="multipart/form-data">
+                    <span class="login100-form-title p-b-59">
 						Cadastre-se
 					</span>
-					<div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
-						<span class="label-input100">Nome da Companhia *</span>
-						<input class="input100" type="text" id="company_name" name="company_name" required>
-						<span class="focus-input100"></span>
-					</div>
-					<div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
-						<span class="label-input100">CNPJ</span>
-						<input class="input100" id="cnpj" name="cnpj" minlength="11" maxlength="14" required>
-						<span class="focus-input100"></span>
-					</div>
-					<div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
-						<span class="label-input100">Telefone *</span>
-						<input class="input100" id="telephone" name="telephone" minlength="11" maxlength="11" required>
-						<span class="focus-input100"></span>
-					</div>
-					<div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
-						<span class="label-input100">E-mail *</span>
-						<input class="input100" type="email" id="email" name="email" required>
-						<span class="focus-input100"></span>
-					</div>
-					<div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
-						<span class="label-input100">Endereço *</span>
-						<input class="input100" type="text" id="address" name="address" required>
-						<span class="focus-input100"></span>
-					</div>
                     <div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
-						<span class="label-input100">Bairro *</span>
-						<input class="input100" type="text" id="district" name="district" required>
-						<span class="focus-input100"></span>
-					</div>
+                        <span class="label-input100">Nome da Companhia *</span>
+                        <input class="input100" type="text" id="company_name" name="company_name" required>
+                        <span class="focus-input100"></span>
+                    </div>
                     <div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
-						<span class="label-input100">CEP *</span>
-						<input class="input100" type="text" id="cep" name="cep" minlength="8" maxlength="8" required>
-						<span class="focus-input100"></span>
-					</div>
+                        <span class="label-input100">CNPJ</span>
+                        <input class="input100" id="cnpj" name="cnpj" minlength="11" maxlength="14" required>
+                        <span class="focus-input100"></span>
+                    </div>
                     <div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
-						<span class="label-input100">Número *</span>
-						<input class="input100" type="number" id="number" name="number" required>
-						<span class="focus-input100"></span>
-					</div>
+                        <span class="label-input100">Telefone *</span>
+                        <input class="input100" id="telephone" name="telephone" minlength="11" maxlength="11" required>
+                        <span class="focus-input100"></span>
+                    </div>
                     <div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
-						<span class="label-input100">Cidade *</span>
-						<input class="input100"  type="text" id="city" name="city" required>
-						<span class="focus-input100"></span>
-					</div>
+                        <span class="label-input100">E-mail *</span>
+                        <input class="input100" type="email" id="email" name="email" required>
+                        <span class="focus-input100"></span>
+                    </div>
                     <div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
-						<span class="label-input100">Estado (UF) *</span>
-						<input class="input100" type="text" id="state" name="state" minlength="2" maxlength="2" required>
-						<span class="focus-input100"></span>
-					</div>
+                        <span class="label-input100">Endereço *</span>
+                        <input class="input100" type="text" id="address" name="address" required>
+                        <span class="focus-input100"></span>
+                    </div>
                     <div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
-						<span class="label-input100">País *</span>
-						<input class="input100" type="country" id="country" name="country" required>
-						<span class="focus-input100"></span>
-					</div>
+                        <span class="label-input100">Bairro *</span>
+                        <input class="input100" type="text" id="district" name="district" required>
+                        <span class="focus-input100"></span>
+                    </div>
                     <div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
-						<span class="label-input100">Foto de perfil *</span>
-						<input class="input100" type="file" name="photo" required>
-						<span class="focus-input100"></span>
-					</div>
+                        <span class="label-input100">CEP *</span>
+                        <input class="input100" type="text" id="cep" name="cep" minlength="8" maxlength="8" required>
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
+                        <span class="label-input100">Número *</span>
+                        <input class="input100" type="number" id="number" name="number" required>
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
+                        <span class="label-input100">Cidade *</span>
+                        <input class="input100" type="text" id="city" name="city" required>
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
+                        <span class="label-input100">Estado (UF) *</span>
+                        <input class="input100" type="text" id="state" name="state" minlength="2" maxlength="2" required>
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
+                        <span class="label-input100">País *</span>
+                        <input class="input100" type="country" id="country" name="country" required>
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input col-lg-6 col-md-6 col-sm-12 col-12">
+                        <span class="label-input100">Foto de perfil *</span>
+                        <input class="input100" type="file" name="photo" required>
+                        <span class="focus-input100"></span>
+                    </div>
                     <div class="wrap-input100 validate-input  col-12">
-						<span class="label-input100">Senha *</span>
-						<input class="input100" type="password" id="password" name="password" minlength="5" maxlength="8" required>
-						<span class="focus-input100"></span>
-					</div>
-					<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+                        <span class="label-input100">Senha *</span>
+                        <input class="input100" type="password" id="password2" name="password2" minlength="5" maxlength="8" required>
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn">
 								Cadastrar
 							</button>
-						</div>
-						<a href="/login" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+                        </div>
+                        <a href="/login" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
 							Login
 							<i class="fa fa-long-arrow-right m-l-5"></i>
 						</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- <h1>Bem-vindo!</h1>
     <form action='/registration/hotel' method='POST' enctype="multipart/form-data"> -->
-        <!-- <section>
+    <!-- <section>
             <label>Qual o nome da cia?</label>
             <input type="text" id="company_name" name="company_name" required>
         </section>
@@ -117,53 +117,53 @@
             <label>Digite seu telephone:</label>
             <input type="text" id="telephone" name="telephone" minlength="11" maxlength="11" required>
         </section> -->
-        <!-- <section><br>
+    <!-- <section><br>
             <label>Digite seu email:</label>
             <input type="email" id="email" name="email" required>
         </section> -->
-        <!-- <section><br>
+    <!-- <section><br>
             <label>Digite sua senha:</label>
             <input type="password" id="password" name="password" minlength="5" maxlength="8" required>
         </section> -->
-        <!-- <section><br>
+    <!-- <section><br>
             <label>Digite seu endereço:</label>
             <input type="text" id="address" name="address" required>
         </section> -->
-        <!-- <section><br>
+    <!-- <section><br>
             <label>Digite seu bairro:</label>
             <input type="text" id="district" name="district" required>
         </section> -->
-        <!-- <section><br>
+    <!-- <section><br>
             <label>Digite seu CEP:</label>
             <input type="text" id="cep" name="cep" minlength="8" maxlength="8" required>
         </section> -->
-        <!-- <section><br>
+    <!-- <section><br>
             <label>Digite seu número:</label>
             <input type="number" id="number" name="number" required>
         </section> -->
-        <!-- <section><br>
+    <!-- <section><br>
             <label>Digite sua cidade:</label>
             <input type="text" id="city" name="city" required>
         </section> -->
-        <!-- <section><br>
+    <!-- <section><br>
             <label>Digite a sigla do seu estado:</label>
             <input type="text" id="state" name="state" minlength="2" maxlength="2" required>
         </section> -->
-        <!-- <section><br>
+    <!-- <section><br>
             <label>Digite seu país:</label>
             <input type="country" id="country" name="country" required>
         </section> -->
-        <!-- <section>
+    <!-- <section>
             <br><label>Adicione sua foto de perfil:</label><input type="file" name="photo" required>
         </section> -->
-        <!-- <br><button>Enviar</button>
+    <!-- <br><button>Enviar</button>
     </form>
     <a href="/login">Já possui cadastro? Clique aqui!</a> -->
 
-	    <script src="/register-hotel/vendor/jquery/jquery-3.2.1.min.js"></script>
-        <script src="/register-hotel/vendor/bootstrap/js/popper.js"></script>
-        <script src="/register-hotel/vendor/bootstrap/js/bootstrap.min.js"></script>
-        <!-- <script src="/register-hotel/js/main.js"></script> -->
+    <script src="/register-hotel/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/register-hotel/vendor/bootstrap/js/popper.js"></script>
+    <script src="/register-hotel/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="/register-hotel/js/main.js"></script> -->
 </body>
 
 </html>

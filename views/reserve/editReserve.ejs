@@ -12,6 +12,20 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
+<style>
+    #available {
+        display: none;
+    }
+    
+    #unavailable {
+        display: none;
+    }
+    
+    #reserve-button {
+        display: none;
+    }
+</style>
+
 <body>
     <div class="card text-center py-2 col-md-6" style="margin: 0 auto; margin-top: 30px; margin-bottom: 30px;">
         <h1>Editar reserva</h1>
@@ -22,16 +36,23 @@
                     <%= var_reserve.final_date %><br>
 
                         <div class="mb-3">
-                            <label class="form-label">Digite a data inicial da reserva:</label>
-                            <input class="form-control" type="date" id="initial_date" name="initial_date" min='2021-11-27' max='2022-11-27' value="<%= var_reserve.initial_date %>" required>
+                            <label class="form-label">Digite uma nova data inicial da reserva:</label>
+                            <input class="form-control" type="date" id="initial_date" name="initial_date" max='2022-11-27' value="<%= var_reserve.initial_date %>" onchange="initial_date_function()" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Digite a data final da reserva:</label>
-                            <input class="form-control" type="date" id="final_date" name="final_date" min='2021-11-27' max='2022-11-27' value="<%= var_reserve.final_date %>" required>
+                            <label class="form-label">Digite uma nova data final da reserva:</label>
+                            <input class="form-control" type="date" id="final_date" name="final_date" max='2022-11-27' value="<%= var_reserve.final_date %>" onchange="seeAvailability()" required>
                         </div>
                         <br>
+                        <div id="available" style="color: green;">
+                            <strong><p>Esta data está disponível!</p></strong>
+                        </div>
+
+                        <div id="unavailable" style="color: red;">
+                            <strong><p>Esta data está indisponível, tente escolher uma outra data!</p></strong>
+                        </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-bottom: 10px;">
-                            <button type="submit" class="btn btn-primary me-md-2">Ver disponibilidade</button>
+                            <button type="submit" class="btn btn-primary me-md-2" id="reserve-button">Solicitar alteração</button>
                         </div>
             </form>
             <a href="/reserves/<%=var_reserve.id%>"><button class="btn btn-primary me-md-2">Voltar</button></a>
@@ -39,20 +60,92 @@
     </div>
 </body>
 <script>
-    var dd = data.getDate();
-    var mm = data.getMonth() + 1; //0 a 11
-    var yy = data.getFullYear(); // 4 dígitos
-    var today = yy + '-' + mm + '-' + dd;
-    var nextYear = (yy + 1) + '-' + mm + '-' + dd;
+    var data = new Date();
+    var dia = String(data.getDate()).padStart(2, '0');
+    var mes = String(data.getMonth() + 1).padStart(2, '0');
+    var ano = data.getFullYear();
+    dataAtual = ano + '-' + mes + '-' + dia;
 
-    var dateControl = document.getElementById('initial_date');
-    var dateControl2 = document.getElementById('final_date');
+    var initial_date = document.getElementById('initial_date');
+    initial_date.setAttribute("min", dataAtual);
 
-    dateControl.setAttribute("max", nextYear);
-    dateControl.setAttribute("min", today);
+    function initial_date_function() {
+        var reserve_initial_date = document.getElementById('initial_date').value;
+        diaDepois();
+        seeAvailability();
+    }
 
-    dateControl2.setAttribute("max", nextYear);
-    dateControl2.setAttribute("min", today);
+    function diaDepois() {
+        var inicial = document.getElementById("initial_date").value;
+        var partes = inicial.split("-");
+        var ano = partes[0];
+        var mes = partes[1] - 1;
+        var dia = partes[2];
+
+        inicial = new Date(ano, mes, dia);
+        final = new Date(inicial);
+        final.setDate(final.getDate() + 1);
+
+        var dd = ("0" + final.getDate()).slice(-2);
+        var mm = ("0" + (final.getMonth() + 1)).slice(-2);
+        var yy = final.getFullYear();
+        var dataformatada = yy + '-' + mm + '-' + dd;
+
+        //Configurando a data do input "final_date"
+        var final_date = document.getElementById('final_date');
+        final_date.setAttribute("min", dataformatada);
+        final_date.value = dataformatada;
+    }
+
+    function pegarData(dataEscolhida) {
+        datafinal = new Date(dataEscolhida);
+        var d = ("0" + datafinal.getDate()).slice(-2);
+        var m = ("0" + (datafinal.getMonth() + 1)).slice(-2);
+        var y = datafinal.getFullYear();
+        var datafinalformatada = y + '-' + m + '-' + d;
+        return datafinalformatada;
+    }
+
+    function seeAvailability() {
+        var reserve_initial_date = document.getElementById('initial_date').value;
+        var reserve_final_date = document.getElementById('final_date').value;
+
+        var available = true;
+
+        <% for (let i = 0; i < reserves.length; i++) { %>
+        if (<%= reserves[i].id %> != <%= var_reserve.id %>) {
+            initialDate = pegarData('<%= reserves[i].initial_date %>');
+            finalDate = pegarData('<%= reserves[i].final_date %>');
+
+            //Validação da data inicial escolhida:
+            if ((reserve_initial_date < initialDate) || (reserve_initial_date >= finalDate)) {
+                //Validação da data final escolhida:
+                if (!((reserve_initial_date < initialDate && reserve_final_date < initialDate) || (reserve_initial_date >= finalDate && reserve_final_date > finalDate))) {
+                    available = false;
+                }
+            } else {
+                available = false;
+            }
+        }
+        <% } %>
+        disponibilidade(available);
+    }
+
+    function disponibilidade(available) {
+        var date_available = document.getElementById('available');
+        var date_unavailable = document.getElementById('unavailable');
+        var reserve_button = document.getElementById('reserve-button');
+
+        if (available != false) {
+            date_available.style.display = "block"; //disponível
+            date_unavailable.style.display = "none";
+            reserve_button.style.display = "block"; //disponível
+        } else {
+            date_unavailable.style.display = "block"; //indisponível
+            date_available.style.display = "none";
+            reserve_button.style.display = "none";
+        }
+    }
 </script>
 
 </html>

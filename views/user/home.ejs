@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" style="margin: 0 auto; margin-top: 30px;">
         <h1>Acomodações:</h1>
         <div>
             <% const countAccommodation = accommodation.length %>
@@ -99,7 +99,7 @@
             <% const countReserves = reserves.length %>
                 <% for (let r of reserves){ %>
                     <li>
-                        <%= r.number %> -
+                        <%= r.id %> -
                             <%= r.initial_date %> -
                                 <%= r.final_date %>
                                     <a href="/reserves/<%= r.id %>">Detalhes</a>

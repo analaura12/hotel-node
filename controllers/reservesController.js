@@ -9,6 +9,7 @@ router.get('/myReserves', async(req, res) => {
         const reserves = await Reserve.findAll({
             where: { user_id: user_id }
         });
+        console.log(reserves);
         res.render('reserve/myReserves', { reserves });
     } catch (err) {
         console.log(err);
@@ -19,10 +20,13 @@ router.get('/newReserve/:idAccommodation/:idHotel', async(req, res) => {
     const { idAccommodation, idHotel } = req.params;
     req.session.hotel_id = idHotel;
     req.session.accommodation_id = idAccommodation;
+    const idUser = req.session.userid;
     try {
         const accommodation = await Accommodation1.findByPk(idAccommodation);
         const hotels = await Hotel.findByPk(idHotel);
-        const reserves = await Reserve.findAll();
+        const reserves = await Reserve.findAll({
+            where: { accommodation_id: idAccommodation }
+        });
         res.render('reserve/newReserve', { hotels, accommodation, reserves });
     } catch (err) {
         console.log(err);
@@ -60,7 +64,11 @@ router.get('/:id/editReserve', async(req, res) => {
     const { id } = req.params;
     try {
         let var_reserve = await Reserve.findByPk(id);
-        res.render('reserve/editReserve', { var_reserve });
+        const accommodation = await Accommodation1.findByPk(var_reserve.accommodation_id);
+        const reserves = await Reserve.findAll({
+            where: { accommodation_id: accommodation.id }
+        });
+        res.render('reserve/editReserve', { var_reserve, reserves });
     } catch (err) {
         console.log(err);
     }

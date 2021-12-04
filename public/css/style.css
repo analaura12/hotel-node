@@ -10085,3 +10085,9 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+
+.justify-content-space-between{
+  justify-content:space-between;
+  display: flex;
+}

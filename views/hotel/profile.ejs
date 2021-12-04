@@ -1,87 +1,212 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset='utf-8'>
-    <title>Perfil</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>TravelPalace</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700&display=swap"  rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet"type="text/css"   href="/css/animate.css">
+
+    <link  rel="stylesheet" type="text/css"  href="/css/owl.carousel.min.css">
+    <link  rel="stylesheet" type="text/css"  href="/css/owl.theme.default.min.css">
+    <link  rel="stylesheet" type="text/css"  href="/css/magnific-popup.css">
+
+
+    <link  rel="stylesheet" type="text/css"  href="/css/aos.css">
+
+    <link  rel="stylesheet" type="text/css"  href="/css/ionicons.min.css">
+
+    <link  rel="stylesheet" type="text/css"  href="/css/bootstrap-datepicker.css">
+    <link  rel="stylesheet" type="text/css"  href="/css/jquery.timepicker.css">
+
+
+    <link  rel="stylesheet" type="text/css"  href="/css/flaticon.css">
+    <link  rel="stylesheet" type="text/css"  href="/css/icomoon.css">
+    <link  rel="stylesheet" type="text/css"  href="/css/style.css">
 </head>
-
 <body>
-    <h1>Meu perfil</h1>
-    <form method="POST" action="/hotel/<%= var_hotel.id %>?_method=PATCH" enctype="multipart/form-data">
-        <section>
-            <label>Nome: </label>
-            <textarea name="company_name" cols="25" rows="1" required><%=var_hotel.company_name%></textarea>
-        </section>
-        <section><br>
-            <label>CNPJ: </label>
-            <textarea name="cnpj" cols="25" rows="1" minlength="11" maxlength="14" required><%=var_hotel.cnpj%></textarea>
-        </section>
-        <section><br>
-            <label>Telefone:</label>
-            <textarea name="telephone" cols="25" rows="1" minlength="11" maxlength="11" required><%=var_hotel.telephone%></textarea>
-        </section>
-        <section><br>
-            <label>E-mail:</label>
-            <textarea name="email" cols="25" rows="1" required><%=var_hotel.email%></textarea>
-        </section>
-        <section><br>
-            <label>Senha:</label>
-            <textarea name="password" cols="25" rows="1" minlength="5" maxlength="8" required><%=var_hotel.password%></textarea>
-        </section>
-        <section><br>
-            <label>Endereço:</label>
-            <textarea name="address" cols="25" rows="1"><%=var_hotel.address%></textarea>
-        </section>
-        <section><br>
-            <label>Número:</label>
-            <textarea name="number" cols="25" rows="1" required><%=var_hotel.number%></textarea>
-        </section>
-        <section><br>
-            <label>Bairro:</label>
-            <textarea name="district" cols="25" rows="1" required><%=var_hotel.district%></textarea>
-        </section>
-        <section><br>
-            <label>CEP:</label>
-            <textarea name="cep" cols="25" rows="1" minlength="5" maxlength="8" required><%=var_hotel.cep%></textarea>
-        </section>
-        <section><br>
-            <label>Cidade:</label>
-            <textarea name="city" cols="25" rows="1" required><%=var_hotel.city%></textarea>
-        </section>
-        <section><br>
-            <label>Estado:</label>
-            <textarea name="state" cols="25" rows="1" minlength="2" maxlength="2" required><%=var_hotel.state%></textarea>
-        </section>
-        <section><br>
-            <label>País:</label>
-            <textarea name="country" cols="25" rows="1" required><%=var_hotel.country%></textarea>
-        </section>
-        <section><br>
-            <label>Conveniência:</label>
-            <textarea name="convenience" cols="25" rows="1"><%=var_hotel.convenience%></textarea>
-        </section>
-        <section><br>
-            <label>Observation:</label>
-            <textarea name="observation" cols="25" rows="1"><%=var_hotel.observation%></textarea>
-        </section>
-        <section><br>
-            <label>Razão Social:</label>
-            <textarea name="social_reason" cols="25" rows="1"><%=var_hotel.social_reason%></textarea>
-        </section>
-        <section>
-            <label>Foto de perfil atual:<%=var_hotel.photo%></label>
-            <br><label>Atualize sua foto de perfil:</label><input type="file" name="photo">
-        </section>
-        <br>
-        <button type="submit">Salvar</button><a href="/hotel"><button>Voltar</button></a>
-    </form>
+    <nav class="navbar navbar-expand-lg" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Travel<span>Palace</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="" class="nav-link">Página Inicial</a></li>
+                    <li class="nav-item">
+                        <a href="/hotel/profile" class="nav-link">Meu Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/login/logoff" class="nav-link">Sair</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <br>
-    <form method="POST" action="/hotel/profile/<%=var_hotel.id%>?_method=DELETE">
-        <br><button>Apagar perfil</button>
-    </form>
+    <section class="ftco-section ftco-menu bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header justify-content-space-between">
+                            <h3>Editar Perfil</h3>
+                            <form method="POST" action="/hotel/profile/<%=var_hotel.id%>?_method=DELETE">
+                                <button class="btn btn-danger">Apagar perfil</button>
+                            </form>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="/hotel/<%= var_hotel.id %>?_method=PATCH" enctype="multipart/form-data">
+                                <div class="form-group">
+                                  <label for="">Nome da Companhia</label>
+                                  <input type="text" class="form-control"  name="company_name" required value="<%=var_hotel.company_name%>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">CNPJ</label>
+                                    <input type="text" class="form-control" name="cnpj" minlength="11" maxlength="14" required value="<%=var_hotel.cnpj%>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Telefone</label>
+                                    <input type="text" class="form-control"  name="telephone" minlength="11" maxlength="11" required value="<%=var_hotel.telephone%>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">E-mail</label>
+                                    <input type="text" class="form-control" name="email" required value="<%=var_hotel.email%>" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Senha</label>
+                                    <input type="password" class="form-control" name="password" minlength="5" maxlength="8" required value="<%=var_hotel.password%>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Endereço</label>
+                                    <input type="text" class="form-control" name="address" value="<%=var_hotel.address%>"> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Bairro</label>
+                                    <input type="text" class="form-control" name="district" value="<%=var_hotel.district%>"> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Número</label>
+                                    <input type="text" class="form-control" name="number" value="<%=var_hotel.number%>"> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="">CEP</label>
+                                    <input type="text" class="form-control" name="cep" value="<%=var_hotel.cep%>"> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Cidade</label>
+                                    <input type="text" class="form-control" name="city" value="<%=var_hotel.city%>"> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Estado</label>
+                                    <input type="text" class="form-control" name="state" value="<%=var_hotel.state%>"> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="">País</label>
+                                    <input type="text" class="form-control" name="country" value="<%=var_hotel.country%>"> 
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Conveniência</label>
+                                    <input type="text" class="form-control" name="convencience" value="<%=var_hotel.convencience%>"> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Observação</label>
+                                    <input type="text" class="form-control" name="observation" value="<%=var_hotel.observation%>"> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Razão Social</label>
+                                    <input type="text" class="form-control" name="social_reason" value="<%=var_hotel.social_reason%>"> 
+                                </div>
+                                <div class="form-group">
+                                    <label>Foto de perfil atual:<%=var_hotel.photo%></label> <br>
+                                    <label for="">Selecionar nova imagem</label>
+                                    <input class="input100" type="file" name="photo" required>
+                                </div>
+                                <button class="btn btn-primary">Atualizar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="ftco-footer ftco-section img" style="background-image: url(images/bg_4.jpg);">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">TravelPalace</h2>
+                        <p>top top top</p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-5">
+                        <h2 class="ftco-heading-2">Links</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="py-2 d-block">oi</a></li>
+                            <li><a href="#" class="py-2 d-block">oi</a></li>
+                            <li><a href="#" class="py-2 d-block">oi</a></li>
+                            <li><a href="#" class="py-2 d-block">oi</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Privacidade</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="py-2 d-block">oi</a></li>
+                            <li><a href="#" class="py-2 d-block">oi</a></li>
+                            <li><a href="#" class="py-2 d-block">oi</a></li>
+                            <li><a href="#" class="py-2 d-block">oi</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+				stroke="#F96D00" /></svg></div>
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.easing.1.3.js"></script>
+    <script src="/js/jquery.waypoints.min.js"></script>
+    <script src="/js/jquery.stellar.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/jquery.animateNumber.min.js"></script>
+    <script src="/js/bootstrap-datepicker.js"></script>
+    <script src="/js/scrollax.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+
 </body>
 
 </html>

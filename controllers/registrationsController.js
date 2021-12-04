@@ -13,7 +13,7 @@ router.post('/hotel', multer.single('photo'), async(req, res) => {
     const { company_name, cnpj, telephone, email, password2, address, district, cep, number, city, state, country } = req.body;
     const photo = req.file.filename;
     try {
-        password = await bcrypt.hash(password2, saltRounds);
+        const password = await bcrypt.hash(password2, saltRounds);
         await Hotel.create({ company_name, cnpj, telephone, email, password, address, district, cep, number, city, state, country, photo });
         res.redirect('/login');
     } catch (err) {

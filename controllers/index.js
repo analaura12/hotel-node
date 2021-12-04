@@ -5,6 +5,10 @@ const reservesController = require('./reservesController');
 const registrationsController = require('./registrationsController');
 const loginsController = require('./loginsController');
 
+const hotelAccommodationController = require('./hotelAccommodationController');
+const hotelReserveController = require('./hotelReserveController');
+
+
 controllers = {
     hotels: hotelsController,
     users: usersController,
@@ -12,6 +16,8 @@ controllers = {
     reserves: reservesController,
     registrations: registrationsController,
     logins: loginsController,
+    hotelaccomodation: hotelAccommodationController,
+    hotelreserve: hotelReserveController,
 }
 
 module.exports = controllers;

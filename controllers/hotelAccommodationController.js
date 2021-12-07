@@ -7,7 +7,9 @@ router.get('/', async(req, res) => {
     const id = req.session.userid;
     try {
         let var_hotel = await Hotel.findByPk(id);
-        const accommodations = await Accommodation1.findAll();
+        const accommodations = await Accommodation1.findAll({
+            where: { hotel_id: var_hotel.id }
+        });
         res.render('hotel/accommodation/index', { var_hotel, accommodations });
     } catch (err) {
         console.log(err);

@@ -8,3 +8,6 @@
 * npm install
 * npx sequelize db:migrate
 * npx sequelize db:seed:all
+
+
+*Observação: pode ser que seja necessário ter o WAMP/XAMPP instalado

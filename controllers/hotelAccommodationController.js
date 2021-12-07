@@ -66,19 +66,34 @@ router.get('/destroy/:id', async(req, res) => {
 
 
 router.patch('/update/:id', multer.single('photo'), async(req, res) => {
-    const { number, value, number_of_guests, description, convenience, observation, hotel_id} = req.body;
+    const { number, value, number_of_guests, description, convenience, observation, hotel_id } = req.body;
 
     try {
         try {
             const photo = req.file.filename;
             await Accommodation1.update({
-                number, value, number_of_guests, description, convenience, observation, hotel_id, photo }, {
+                number,
+                value,
+                number_of_guests,
+                description,
+                convenience,
+                observation,
+                hotel_id,
+                photo
+            }, {
                 where: { id: req.params.id }
             });
             res.redirect('/hotel/accommodation');
         } catch (err) {
-            await Accommodation1.update({ 
-                number, value, number_of_guests, description, convenience, observation, hotel_id, photo }, {
+            await Accommodation1.update({
+                number,
+                value,
+                number_of_guests,
+                description,
+                convenience,
+                observation,
+                hotel_id,
+            }, {
                 where: { id: req.params.id }
             });
             res.redirect('/hotel/accommodation');

@@ -1,4 +1,4 @@
-# hotel-node
+# hotel-node - Ana Laura - Bruna Andrade
 
 É necessário:
 
